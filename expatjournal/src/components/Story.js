@@ -1,9 +1,11 @@
 import React, { useEffect, useState,  } from "react";
 import axiosWithAuth from '../utils/axiosWithAuth'
+import { connect } from 'react-redux'
 import { useParams, useHistory } from "react-router-dom";
 
 const Story = () => {
 
+    //fetch the individual Story to display when a story is clicked on in the Dashboard
     const fetchStory = () => {
         axiosWithAuth()
         .get("")
@@ -13,6 +15,11 @@ const Story = () => {
         .catch(err => {
             console.error("Error from inside fetchStory, Story component")
         })
+    }
+
+    //story functionality (delete), functionality missing due to lack of endpoint and difficulty to simulate without such
+    const deleteStory = e => {
+        e.preventDefault()
     }
 
     return (
@@ -25,3 +32,4 @@ const Story = () => {
     )
 }
 
+export default connect(null, {})(Story)
