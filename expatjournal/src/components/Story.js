@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState,  } from "react";
+import axiosWithAuth from '../utils/axiosWithAuth'
+import { useParams, useHistory } from "react-router-dom";
 
 const Story = () => {
+
+    const fetchStory = () => {
+        axiosWithAuth()
+        .get("")
+        .then(res => {
+            console.log(res.data)
+        })
+        .catch(err => {
+            console.error("Error from inside fetchStory, Story component")
+        })
+    }
+
     return (
-        <section>This is a test section. It is only a test section. Avert thine eyes.</section>
+        <section>
+            <img href="#" alt="nolo"/>
+            <h2>{null}</h2>
+            <h3>{null}</h3>
+            <p>{null}</p>
+        </section>
     )
 }
 
-export default Story
