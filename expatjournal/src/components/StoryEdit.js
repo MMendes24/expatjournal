@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 
 
 const initialStory = {
@@ -60,3 +61,4 @@ const StoryEdit = () => {
     )
 }
 
+export default connect(null, {})(StoryEdit)

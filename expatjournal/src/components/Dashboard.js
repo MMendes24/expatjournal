@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom'
 const Dashboard = () => {
     const history = useHistory()
 
+    const props = null //added by Mars to test deployment
+
     useEffect(() => {
         props.getStories()
     },[])
