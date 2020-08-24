@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { addStory } from '../actions/addStory'
 
 
 const initialFormValues = {
@@ -15,7 +16,7 @@ const addStory = () => {
     const [formInputs, setFormInputs] = useState(initialFormValues)
 
     const handleChanges = (e) => {
-     const {title, location, story} = e.target.value
+    //  const {name, value} = e.target.value
      setFormInputs({
          ...formInputs,
          [e.target.name]: e.target.value
@@ -25,6 +26,7 @@ const addStory = () => {
 const handleSubmit = (e) => {
     e.preventDefault()
     // insert action 
+
 }
     return (
         <div>
