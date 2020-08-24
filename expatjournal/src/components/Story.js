@@ -22,10 +22,21 @@ const Story = () => {
         e.preventDefault()
     }
 
+    //shape of data (to be removed)
+
+    //image
+    // title
+    // username?
+    // time
+    // location
+    // body
+
     return (
         <section>
             <img href="#" alt="nolo"/>
+            <h1>{null}</h1>
             <h2>{null}</h2>
+            <h3>{null}</h3>
             <h3>{null}</h3>
             <p>{null}</p>
         </section>
