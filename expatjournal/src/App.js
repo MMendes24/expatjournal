@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SignUpForm from "./components/SignUpForm";
 import axios from "axios";
 import * as yup from "yup";
+import { Switch, Route } from 'react-router-dom'
 
 // const dummyData = {
 //   sha: { username: "Sha", age: 29, id: 0 },
@@ -115,13 +116,19 @@ function App() {
 
   return (
     <div>
+      <Switch>
+        <Route path='/register'>
       <SignUpForm
         values={formValues}
         inputChange={inputChange}
         submit={submit}
         disabled={disabled}
         errors={formErrors}
-      />
+      />          
+        </Route>
+        
+      </Switch>
+
       <div className="App"></div>
     </div>
   );
