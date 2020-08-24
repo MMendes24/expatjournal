@@ -1,21 +1,23 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { addStoryAction } from '../actions/addStoryAction'
+import { useHistory } from 'react-router-dom'
 
 
 const initialFormValues = {
     title: '',
     location: '',
     story: '',
-    time: new Date().toDateString()
 }
 
 
-const addStory = () => {
+const AddStory = () => {
 
     const [formInputs, setFormInputs] = useState(initialFormValues)
+    const history = useHistory()
 
     const handleChanges = (e) => {
-     const {title, location, story} = e.target.value
+    //  const {name, value} = e.target.value
      setFormInputs({
          ...formInputs,
          [e.target.name]: e.target.value
@@ -25,11 +27,13 @@ const addStory = () => {
 const handleSubmit = (e) => {
     e.preventDefault()
     // insert action 
+    // props.addStoryAction(formInputs)
+    // history.push('/')
 }
     return (
         <div>
-            <form>
-                <h2>Add Story</h2>
+            <form onSubmit={handleSubmit}>
+                <h2>Add a new Story</h2>
                 <input 
                 type="text"
                 placeholder='title'
@@ -51,6 +55,7 @@ const handleSubmit = (e) => {
                 value={formInputs.story}
                 onChange={handleChanges}
                 />
+                <button>Add Story</button>
             </form>
         </div>
     )
@@ -60,4 +65,4 @@ const mapStateToProps = (state) => {
 
 
 }
-export default connect(mapStateToProps, {})(addStory)
+export default connect(mapStateToProps, {addStoryAction})(AddStory)

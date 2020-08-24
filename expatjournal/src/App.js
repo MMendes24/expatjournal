@@ -3,6 +3,10 @@ import SignUpForm from "./components/SignUpForm";
 import axios from "axios";
 import * as yup from "yup";
 import { Switch, Route } from 'react-router-dom'
+import Dashboard from './components/Dashboard'
+import AddStory from './components/AddStory'
+import StoryEdit from './components/StoryEdit'
+import Story from './components/Story'
 
 // const dummyData = {
 //   sha: { username: "Sha", age: 29, id: 0 },
@@ -116,7 +120,8 @@ function App() {
   }, [formValues]);
 
   return (
-    <div>
+    <div className='App'>
+    <>
       <Switch>
         <Route path='/register'>
       <SignUpForm
@@ -127,10 +132,20 @@ function App() {
         errors={formErrors}
       />          
         </Route>
-        
+        <Route path='/dashboard'>
+          <Dashboard />
+        </Route>
+        <Route path='/add-story'>
+          <AddStory />
+        </Route>
+        <Route path='/edit-story'>
+          <StoryEdit />
+        </Route>
+        <Route path='/story/:id'>
+          <Story />
+        </Route>
       </Switch>
-
-      <div className="App"></div>
+    </>
     </div>
   );
 }
