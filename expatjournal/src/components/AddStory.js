@@ -27,8 +27,8 @@ const AddStory = () => {
 const handleSubmit = (e) => {
     e.preventDefault()
     // insert action 
-    props.addStoryAction(formInputs)
-    history.push('/')
+    // props.addStoryAction(formInputs)
+    // history.push('/')
 }
     return (
         <div>

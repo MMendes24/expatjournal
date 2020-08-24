@@ -120,6 +120,7 @@ function App() {
   }, [formValues]);
 
   return (
+    <div className='App'>
     <>
       <Switch>
         <Route path='/register'>
@@ -145,6 +146,7 @@ function App() {
         </Route>
       </Switch>
     </>
+    </div>
   );
 }
 
