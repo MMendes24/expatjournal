@@ -121,6 +121,7 @@ function App() {
 
   return (
     <div className='App'>
+      <h1>Mars Test Header</h1>
     <>
       <Switch>
         <Route path='/register'>
