@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { connect } from 'react-redux'
+import { loginAction } from '../actions/loginAction'
+import SignUpForm from "./SignUpForm";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -15,6 +18,12 @@ const SigninForm = (props) => {
   const onSubmit = (evt) => {
     evt.preventDefault();
     submit();
+    const newInputObject = {
+      username: values.username,
+      password: values.password,
+    }
+    props.loginAction(newInputObject)
+
   };
 
   const onInputChange = (evt) => {
@@ -48,11 +57,10 @@ const SigninForm = (props) => {
             />
           </label>
         </div>
-        <button>Login</button>
+        <button onClick={() => history.push("/add-story")}>Login</button>
       </StyledDiv>
     </form>
   );
 };
-export default SigninForm;
+export default connect(null, {loginAction})(SigninForm);
 
-// onClick={() => history.push("/add-story")}

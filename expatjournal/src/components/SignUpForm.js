@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
+
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -73,4 +74,7 @@ const SignUpForm = (props) => {
   );
 };
 
-export default SignUpForm;
+
+
+export default SignUpForm
+
