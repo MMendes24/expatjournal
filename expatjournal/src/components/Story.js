@@ -15,7 +15,7 @@ const Story = props => {
 
     useEffect(() => {
         fetchStory()
-    })
+    }, [])
 
     //story functionality (delete), functionality missing due to lack of endpoint and difficulty to simulate without such
     const deleteStory = e => {

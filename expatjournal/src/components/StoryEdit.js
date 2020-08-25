@@ -12,7 +12,7 @@ const initialStory = {
 }
 
 const StoryEdit = props => {
-    const [ storyValues, setStoryValues ] = useState(initialStory)
+    const [ story, setStory ] = useState(initialStory)
 
     useEffect(() => {
         props.fetchSingleStory()
@@ -21,14 +21,15 @@ const StoryEdit = props => {
 
     const handleStoryChanges = e => {
         console.log(props.stories)
-        setStoryValues({
-            ...storyValues,
+        setStory({
+            ...story,
             [e.target.name]: e.target.value
         })
     }
 
     const onSubmit = e => {
         e.preventDefault()
+        editStory()
     }
 
     return (
@@ -40,7 +41,7 @@ const StoryEdit = props => {
                     name="title"
                     type="text"
                     placeholder="Title"
-                    value={storyValues.title}
+                    value={story.title}
                     onChange={handleStoryChanges}
                     />
                 </label>
@@ -50,7 +51,7 @@ const StoryEdit = props => {
                     name="location"
                     type="text"
                     placeholder="Where it happened..."
-                    value={storyValues.location}
+                    value={story.location}
                     onChange={handleStoryChanges}
                     />
                 </label>
@@ -60,11 +61,11 @@ const StoryEdit = props => {
                     name="story"
                     type="text"
                     placeholder="Your story..."
-                    value={storyValues.story}
+                    value={story.story}
                     onChange={handleStoryChanges}
                     />
                 </label>
-
+                <button>Complete</button>
             </form>
         </section>
     )
