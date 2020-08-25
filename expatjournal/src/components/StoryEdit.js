@@ -14,10 +14,15 @@ const initialStory = {
 const StoryEdit = props => {
     const [ storyValues, setStoryValues ] = useState(initialStory)
 
-    useEffect(() => {
+    const fetchStory = () => {
         props.fetchSingleStory()
         console.log(props)
-    }, []) 
+    } 
+
+    useEffect(() => {
+        fetchStory()
+        console.log("Story fetched")
+    })
 
     const handleStoryChanges = e => {
         setStoryValues({
@@ -68,5 +73,6 @@ const StoryEdit = props => {
         </section>
     )
 }
+
 
 export default connect(null, {editStory, fetchSingleStory})(StoryEdit)

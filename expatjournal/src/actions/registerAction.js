@@ -7,3 +7,4 @@ export const registerAction = () => dispatch => {
     .then()
     .catch()
 }
+
