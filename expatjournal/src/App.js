@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import SignUpForm from "./components/SignUpForm";
+import LoginForm from "./components/LoginForm";
 import axios from "axios";
 import * as yup from "yup";
-import { Switch, Route } from 'react-router-dom'
-import Dashboard from './components/Dashboard'
-import AddStory from './components/AddStory'
-import StoryEdit from './components/StoryEdit'
-import Story from './components/Story'
+import { Switch, Route } from "react-router-dom";
+import Dashboard from "./components/Dashboard";
+import AddStory from "./components/AddStory";
+import StoryEdit from "./components/StoryEdit";
+import Story from "./components/Story";
+import { connect } from 'react-redux'
+import { registerAction } from './actions/registerAction'
 
 // const dummyData = {
 //   sha: { username: "Sha", age: 29, id: 0 },
@@ -43,22 +46,22 @@ const initialFormErrors = {
 const initialUsers = [];
 const initialDisabled = true;
 
-function App() {
+function App(props) {
   const [user, setUser] = useState(initialUsers);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
 
-  const getUsers = () => {
-    axios
-      .get("https://reqres.in/api/users") //users
-      .then((res) => {
-        setUser(res.data);
-      })
-      .catch((err) => {
-        debugger;
-      });
-  };
+  // const getUsers = () => {
+  //   axios
+  //     .get("https://expatjournal2.netlify.app/") //users
+  //     .then((res) => {
+  //       setUser(res.data);
+  //     })
+  //     .catch((err) => {
+  //       debugger;
+  //     });
+  // };
 
   const postNewUser = (newUser) => {
     axios
@@ -103,16 +106,18 @@ function App() {
       password: formValues.password.trim(),
       email: formValues.email,
     };
-    postNewUser(newUser);
+    // postNewUser(newUser);
+    props.registerAction(newUser)
+    console.log(newUser)
   };
 
   useEffect(() => {
-    getUsers();
+    // getUsers();
     console.log(formValues);
     console.log(user);
     console.log(initialUsers);
   }, []);
-  
+
   useEffect(() => {
     formSchema.isValid(formValues).then((valid) => {
       setDisabled(!valid);
@@ -120,37 +125,45 @@ function App() {
   }, [formValues]);
 
   return (
-    <div className='App'>
-    <>
-      <Switch>
-        <Route path='/register'>
-      <SignUpForm
-        values={formValues}
-        inputChange={inputChange}
-        submit={submit}
-        disabled={disabled}
-        errors={formErrors}
-      />          
-        </Route>
-        <Route path='/dashboard'>
-          <Dashboard />
-        </Route>
-        <Route path='/add-story'>
-          <AddStory />
-        </Route>
-        <Route path='/edit-story'>
-          <StoryEdit />
-        </Route>
-        <Route path='/story/:id'>
-          <Story />
-        </Route>
-      </Switch>
-    </>
+    <div className="App">
+      <h1>Mars Test Header</h1>
+      <>
+        <Switch>
+          <Route path="/register">
+            <SignUpForm
+              values={formValues}
+              inputChange={inputChange}
+              submit={submit}
+              disabled={disabled}
+              errors={formErrors}
+            />
+          </Route>
+          <Route path="/login">
+            <LoginForm
+              values={formValues}
+              inputChange={inputChange}
+              submit={submit}
+            />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/add-story">
+            <AddStory />
+          </Route>
+          <Route path="/edit-story">
+            <StoryEdit />
+          </Route>
+          <Route path="/story/:id">
+            <Story />
+          </Route>
+        </Switch>
+      </>
     </div>
   );
 }
 
-export default App;
+export default connect(null, {registerAction})(App)
 
 // {
 //   Object.values(user).map((x) => (
