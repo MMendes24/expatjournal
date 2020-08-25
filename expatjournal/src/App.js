@@ -11,6 +11,7 @@ import Story from "./components/Story";
 import { connect } from 'react-redux'
 import { registerAction } from './actions/registerAction'
 
+
 // const dummyData = {
 //   sha: { username: "Sha", age: 29, id: 0 },
 //   tom: { username: "Tom", age: 30, id: 1 },
