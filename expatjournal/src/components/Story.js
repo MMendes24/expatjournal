@@ -1,25 +1,26 @@
-import React, { useEffect, useState,  } from "react";
-import axiosWithAuth from '../utils/axiosWithAuth'
+import React, { useEffect } from "react";
 import { connect } from 'react-redux'
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-const Story = () => {
+import fetchSingleStory from '../actions/getStoryActions'
+
+const Story = props => {
+    const history = useHistory()
 
     //fetch the individual Story to display when a story is clicked on in the Dashboard
     const fetchStory = () => {
-        axiosWithAuth()
-        .get("")
-        .then(res => {
-            console.log(res.data)
-        })
-        .catch(err => {
-            console.error("Error from inside fetchStory, Story component")
-        })
-    }
+        props.fetchSingleStory()
+        console.log(props.stories)
+    } 
+
+    useEffect(() => {
+        fetchStory()
+    }, [])
 
     //story functionality (delete), functionality missing due to lack of endpoint and difficulty to simulate without such
     const deleteStory = e => {
         e.preventDefault()
+        history.push("/dashboard")
     }
 
     //shape of data (to be removed)
@@ -39,8 +40,19 @@ const Story = () => {
             <h3>{null}</h3>
             <h3>{null}</h3>
             <p>{null}</p>
+            <button onClick={deleteStory}>Delete</button>
         </section>
     )
 }
 
-export default connect(null, {})(Story)
+const mapStatetoProps = state => {
+    return {
+
+        isLoading: state.isLoading,
+        error: state.error,
+        //from api
+        stories: state.stories
+    }
+}
+
+export default connect(mapStatetoProps, {fetchSingleStory})(Story)

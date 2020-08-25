@@ -70,7 +70,7 @@ function App(props) {
         setUser([...user, res.data]);
       })
       .catch((err) => {
-        debugger;
+        // debugger;
       })
       .finally(() => {
         setFormValues(initialFormValues);

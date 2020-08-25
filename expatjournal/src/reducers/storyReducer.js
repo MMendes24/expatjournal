@@ -1,6 +1,7 @@
 import { FETCH_STORIES_START, FETCH_STORIES_SUCCESS, FETCH_STORIES_ERROR } from '../actions/getStories'
 import { ADD_STORY_START, UPDATE_STORY_LIST, ADD_STORY_ERROR } from '../actions/addStoryAction'
 import { EDIT_STORY, EDIT_SUCCESS, EDIT_FAIL } from '../actions/editStoryActions'
+import { FETCH_SINGLE_STORY, FETCH_SINGLE_STORY_SUCCESS, FETCH_SINGLE_STORY_FAIL } from '../actions/getStoryActions'
 import { REG_START, REG_SUCCESS, REG_ERROR } from '../actions/registerAction'
 
 const initialState = {
@@ -86,6 +87,23 @@ const storyReducer = ( state = initialState, action ) => {
                 isLoading: false,
                 error: action.payload
             }
+        case FETCH_SINGLE_STORY:
+            return {
+                ...state,
+                isLoading: true,
+            }
+        case FETCH_SINGLE_STORY_SUCCESS:
+            console.log(action.payload)
+            return {
+                ...state,
+                stories: action.payload,
+                isLoading: false,
+            }
+        case FETCH_SINGLE_STORY_FAIL:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
         case REG_START:
             return {
                 ...state,

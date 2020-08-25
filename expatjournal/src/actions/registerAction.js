@@ -16,3 +16,4 @@ export const registerAction = (newUser) => dispatch => {
         dispatch({type: REG_ERROR, payload: err})
     })
 }
+
