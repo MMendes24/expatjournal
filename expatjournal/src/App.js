@@ -50,16 +50,16 @@ function App() {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
 
-  const getUsers = () => {
-    axios
-      .get("https://expatjournal2.netlify.app/") //users
-      .then((res) => {
-        setUser(res.data);
-      })
-      .catch((err) => {
-        debugger;
-      });
-  };
+  // const getUsers = () => {
+  //   axios
+  //     .get("https://expatjournal2.netlify.app/") //users
+  //     .then((res) => {
+  //       setUser(res.data);
+  //     })
+  //     .catch((err) => {
+  //       debugger;
+  //     });
+  // };
 
   const postNewUser = (newUser) => {
     axios
@@ -108,7 +108,7 @@ function App() {
   };
 
   useEffect(() => {
-    getUsers();
+    // getUsers();
     console.log(formValues);
     console.log(user);
     console.log(initialUsers);
