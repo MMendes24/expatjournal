@@ -10,6 +10,7 @@ const Story = props => {
     //fetch the individual Story to display when a story is clicked on in the Dashboard
     const fetchStory = () => {
         props.fetchSingleStory()
+        console.log(props.stories)
     } 
 
     useEffect(() => {
@@ -44,4 +45,14 @@ const Story = props => {
     )
 }
 
-export default connect(null, {fetchSingleStory})(Story)
+const mapStatetoProps = state => {
+    return {
+
+        isLoading: state.isLoading,
+        error: state.error,
+        //from api
+        stories: state.stories
+    }
+}
+
+export default connect(mapStatetoProps, {fetchSingleStory})(Story)

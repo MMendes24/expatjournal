@@ -14,17 +14,13 @@ const initialStory = {
 const StoryEdit = props => {
     const [ storyValues, setStoryValues ] = useState(initialStory)
 
-    const fetchStory = () => {
+    useEffect(() => {
         props.fetchSingleStory()
         console.log(props)
-    } 
-
-    useEffect(() => {
-        fetchStory()
-        console.log("Story fetched")
-    })
+    }, [])
 
     const handleStoryChanges = e => {
+        console.log(props.stories)
         setStoryValues({
             ...storyValues,
             [e.target.name]: e.target.value
@@ -74,5 +70,16 @@ const StoryEdit = props => {
     )
 }
 
+const mapStatetoProps = state => {
+    console.log(state)
+    return {
 
-export default connect(null, {editStory, fetchSingleStory})(StoryEdit)
+        isLoading: state.isLoading,
+        error: state.error,
+
+        //from api
+        stories: state.stories,
+    }
+}
+
+export default connect(mapStatetoProps, {editStory, fetchSingleStory})(StoryEdit)
