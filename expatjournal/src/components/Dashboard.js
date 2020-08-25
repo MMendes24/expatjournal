@@ -3,10 +3,9 @@ import { connect } from 'react-redux'
 import { getStories } from '../actions/getStories'
 import { useHistory } from 'react-router-dom'
 
-const Dashboard = () => {
+const Dashboard = props => {
     const history = useHistory()
 
-    const props = null //added by Mars to test deployment
 
     useEffect(() => {
         props.getStories()
@@ -19,7 +18,7 @@ const Dashboard = () => {
 
         {props.isLoading ? <h4>Loading your stories.. Please wait a moment.</h4> : null}
         {props.error ? <h4>There was an error <br/> {props.error}</h4> : null}
-        {props.stories.length > 0 ? (
+        {props.body.length > 0 ? (
             <div className='stories-container'>
                 {props.stories.map(story => (
                     <div className='story-card'>
@@ -38,7 +37,7 @@ const Dashboard = () => {
 const mapStateToProps = (state) => {
     return {
         isLoading: state.isLoading,
-        stories: state.stories,
+        body: state.body,
         error : state.error,
     }
 } 

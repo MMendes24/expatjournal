@@ -23,7 +23,6 @@ label {
 
 ` 
 
-
 const initialStory = {
     title: "",
     location: "",
@@ -39,7 +38,7 @@ const StoryEdit = props => {
     }, [])
 
     const handleStoryChanges = e => {
-        console.log(props.stories)
+        console.log(props.body)
         setStory({
             ...story,
             [e.target.name]: e.target.value
@@ -98,7 +97,7 @@ const mapStatetoProps = state => {
         error: state.error,
 
         //from api
-        stories: state.stories,
+        body: state.body,
     }
 }
 

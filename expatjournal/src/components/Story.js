@@ -10,7 +10,7 @@ const Story = props => {
     //fetch the individual Story to display when a story is clicked on in the Dashboard
     const fetchStory = () => {
         props.fetchSingleStory()
-        console.log(props.stories)
+        console.log(props.body)
     } 
 
     useEffect(() => {
@@ -34,7 +34,7 @@ const Story = props => {
 
     return (
         <section>
-            <img href="#" alt="nolo"/>
+            <img href="https://source.unsplash.com/user/erondu/400x400" alt="nolo"/>
             <h1>{null}</h1>
             <h2>{null}</h2>
             <h3>{null}</h3>
@@ -51,7 +51,7 @@ const mapStatetoProps = state => {
         isLoading: state.isLoading,
         error: state.error,
         //from api
-        stories: state.stories
+        body: state.body
     }
 }
 

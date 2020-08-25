@@ -51,24 +51,6 @@ const storyReducer = ( state = initialState, action ) => {
                 isLoading: false,
                 error: action.payload
             }
-        case ADD_STORY_START:
-            return {
-                ...state,
-                isLoading: true,
-                error: '',
-            }
-        case UPDATE_STORY_LIST:
-            return {
-                ...state,
-                isLoading: false,
-                stories: [action.payload, ...state.stories]
-            }
-        case ADD_STORY_ERROR:
-            return {
-                ...state,
-                isLoading: false,
-                error: action.payload
-            }
         case EDIT_STORY:
             return {
                 ...state,
@@ -96,7 +78,7 @@ const storyReducer = ( state = initialState, action ) => {
             console.log(action.payload)
             return {
                 ...state,
-                stories: action.payload,
+                body: action.payload,
                 isLoading: false,
             }
         case FETCH_SINGLE_STORY_FAIL:
@@ -104,6 +86,7 @@ const storyReducer = ( state = initialState, action ) => {
                 ...state,
                 isLoading: false,
                 error: action.payload
+            }
         case REG_START:
             return {
                 ...state,
