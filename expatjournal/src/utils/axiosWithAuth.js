@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosWithAuth = () => {
-    axios.create({
+    return axios.create({
         baseURL: "https://expatjournal-back.herokuapp.com/",
         headers: {
             Authorization: localStorage.getItem("token")
