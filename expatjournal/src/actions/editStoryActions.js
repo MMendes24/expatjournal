@@ -13,8 +13,8 @@ const editStory = editedStory => dispatch => {
         console.log(res.data)
         dispatch({ type: EDIT_SUCCESS, payload: res.data })
     })
-    .catch(res => {
-        console.error("API call to edit failed within editStory.js")
-        dispatch({ type: EDIT_FAIL, payload: res.data})
+    .catch(err => {
+        console.log(err)
+        dispatch({ type: EDIT_FAIL, payload: "API call to edit failed within editStory.js"})
     })
 }
