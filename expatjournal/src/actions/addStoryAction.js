@@ -9,7 +9,7 @@ export const addStoryAction = (newStory) => dispatch => {
     .post('https://reqres.in/api/users', newStory)
     .then(res => {
         console.log(res)
-        dispatch({type: UPDATE_STORY_LIST})
+        dispatch({type: UPDATE_STORY_LIST, payload: res.data[0]})
     })
     .catch(err => {
         console.log(err)
