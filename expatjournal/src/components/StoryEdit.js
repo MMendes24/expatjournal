@@ -1,9 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 
 import editStory from '../actions/editStoryActions'
 import fetchSingleStory from '../actions/getStoryActions'
 
+const FormStyled = styled.form`
+
+display: flex;
+flex-flow: column;
+justify-content: center;
+align-items: center;
+
+label {
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+ input {
+     margin: 1% 0%;
+ }
+
+` 
 
 const initialStory = {
     title: "",
@@ -20,7 +38,7 @@ const StoryEdit = props => {
     }, [])
 
     const handleStoryChanges = e => {
-        console.log(props.stories)
+        console.log(props.body)
         setStory({
             ...story,
             [e.target.name]: e.target.value
@@ -34,7 +52,7 @@ const StoryEdit = props => {
 
     return (
         <section>
-            <form onSubmit={onSubmit}>
+            <FormStyled onSubmit={onSubmit}>
 
                 <label>Title:&nbsp;
                     <input
@@ -66,7 +84,7 @@ const StoryEdit = props => {
                     />
                 </label>
                 <button>Complete</button>
-            </form>
+            </FormStyled>
         </section>
     )
 }
@@ -79,7 +97,7 @@ const mapStatetoProps = state => {
         error: state.error,
 
         //from api
-        stories: state.stories,
+        body: state.body,
     }
 }
 

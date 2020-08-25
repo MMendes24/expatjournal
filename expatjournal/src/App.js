@@ -11,6 +11,8 @@ import Story from "./components/Story";
 import { connect } from 'react-redux'
 import { registerAction } from './actions/registerAction'
 
+import PrivateRoute from '../src/components/PrivateRoute'
+
 
 // const dummyData = {
 //   sha: { username: "Sha", age: 29, id: 0 },
@@ -127,7 +129,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <h1>Mars Test Header</h1>
+      <h1>Expat Journal</h1>
       <>
         <Switch>
           <Route path="/register">
@@ -139,25 +141,25 @@ function App(props) {
               errors={formErrors}
             />
           </Route>
-          <Route path="/login">
+          <Route path="/">
             <LoginForm
               values={formValues}
               inputChange={inputChange}
               submit={submit}
             />
           </Route>
-          <Route path="/dashboard">
+          <PrivateRoute path="/dashboard">
             <Dashboard />
-          </Route>
-          <Route path="/add-story">
+          </PrivateRoute>
+          <PrivateRoute path="/add-story">
             <AddStory />
-          </Route>
-          <Route path="/edit-story">
+          </PrivateRoute>
+          <PrivateRoute path="/edit-story">
             <StoryEdit />
-          </Route>
-          <Route path="/story/:id">
+          </PrivateRoute>
+          <PrivateRoute path="/story/:id">
             <Story />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </>
     </div>

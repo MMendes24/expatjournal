@@ -79,7 +79,7 @@ const storyReducer = ( state = initialState, action ) => {
             console.log(action.payload)
             return {
                 ...state,
-                stories: action.payload,
+                body: action.payload,
                 isLoading: false,
             }
         case FETCH_SINGLE_STORY_FAIL:
