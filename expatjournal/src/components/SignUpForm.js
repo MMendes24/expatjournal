@@ -65,7 +65,7 @@ const SignUpForm = (props) => {
               />
             </label>
           </div>
-          <button disabled={disabled} onClick={() => history.push("/login")}>
+          <button type="button" disabled={disabled} onClick={() => history.push("/login")}>
             Sign up
           </button>
         </div>

@@ -11,7 +11,7 @@ import Story from "./components/Story";
 import { connect } from 'react-redux'
 import { registerAction } from './actions/registerAction'
 
-import PrivateRoute from '../src/components/PrivateRoute'
+import PrivateRoute from './components/privateRoute'
 
 
 // const dummyData = {
@@ -110,8 +110,8 @@ function App(props) {
       email: formValues.email,
     };
     // postNewUser(newUser);
-    props.registerAction(newUser)
     console.log(newUser)
+    props.registerAction(newUser)
   };
 
   useEffect(() => {
@@ -141,13 +141,6 @@ function App(props) {
               errors={formErrors}
             />
           </Route>
-          <Route path="/">
-            <LoginForm
-              values={formValues}
-              inputChange={inputChange}
-              submit={submit}
-            />
-          </Route>
           <PrivateRoute path="/dashboard">
             <Dashboard />
           </PrivateRoute>
@@ -160,6 +153,13 @@ function App(props) {
           <PrivateRoute path="/story/:id">
             <Story />
           </PrivateRoute>
+          <Route path="/">
+            <LoginForm
+              values={formValues}
+              inputChange={inputChange}
+              submit={submit}
+            />
+          </Route>
         </Switch>
       </>
     </div>

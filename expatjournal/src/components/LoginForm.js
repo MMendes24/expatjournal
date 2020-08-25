@@ -17,7 +17,7 @@ const SigninForm = (props) => {
   const history = useHistory();
   const onSubmit = (evt) => {
     evt.preventDefault();
-    submit();
+    // submit();
     const newInputObject = {
       username: values.username,
       password: values.password,
