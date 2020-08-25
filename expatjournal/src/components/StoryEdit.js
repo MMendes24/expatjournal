@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+
+import editStory from '../actions/editStoryActions'
+import getStories from '../actions/getStories'
 
 
 const initialStory = {
@@ -8,8 +11,12 @@ const initialStory = {
     story: "",
 }
 
-const StoryEdit = () => {
+const StoryEdit = props => {
     const [ storyValues, setStoryValues ] = useState(initialStory)
+
+    useEffect(() => {
+        //location of eventual "getStory" action
+    }) 
 
     const handleStoryChanges = e => {
         setStoryValues({
@@ -61,4 +68,4 @@ const StoryEdit = () => {
     )
 }
 
-export default connect(null, {})(StoryEdit)
+export default connect(null, {editStory})(StoryEdit)

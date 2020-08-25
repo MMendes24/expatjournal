@@ -18,3 +18,5 @@ const editStory = editedStory => dispatch => {
         dispatch({ type: EDIT_FAIL, payload: "API call to edit failed within editStory.js"})
     })
 }
+
+export default editStory
