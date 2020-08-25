@@ -57,7 +57,7 @@ function App() {
         setUser(res.data);
       })
       .catch((err) => {
-        debugger;
+        // debugger;
       });
   };
 
@@ -68,7 +68,7 @@ function App() {
         setUser([...user, res.data]);
       })
       .catch((err) => {
-        debugger;
+        // debugger;
       })
       .finally(() => {
         setFormValues(initialFormValues);

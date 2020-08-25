@@ -4,11 +4,11 @@ export const FETCH_SINGLE_STORY = "FETCH_SINGLE_STORY"
 export const FETCH_SINGLE_STORY_SUCCESS = "FETCH_SINGLE_STORY_SUCCESS"
 export const FETCH_SINGLE_STORY_FAIL = "FETCH_SINGLE_STORY_FAIL"
 
-const fetchSingleStory = () => dispatch => {
+const fetchSingleStory = () => (dispatch) => {
     dispatch({ type: FETCH_SINGLE_STORY })
 
     axiosWithAuth()
-    .get('https://reqres.in/api/users/1')
+    .get('/1')
     .then(res => {
         console.log(res.data)
         dispatch({ type: FETCH_SINGLE_STORY_SUCCESS, payload: res.data })
