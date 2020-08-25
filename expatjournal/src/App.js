@@ -50,18 +50,6 @@ function App() {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
 
-<<<<<<< HEAD
-  const getUsers = () => {
-    axios
-      .get("https://expatjournal2.netlify.app/") //users
-      .then((res) => {
-        setUser(res.data);
-      })
-      .catch((err) => {
-        // debugger;
-      });
-  };
-=======
   // const getUsers = () => {
   //   axios
   //     .get("https://expatjournal2.netlify.app/") //users
@@ -72,7 +60,6 @@ function App() {
   //       debugger;
   //     });
   // };
->>>>>>> master
 
   const postNewUser = (newUser) => {
     axios
