@@ -8,6 +8,8 @@ import Dashboard from "./components/Dashboard";
 import AddStory from "./components/AddStory";
 import StoryEdit from "./components/StoryEdit";
 import Story from "./components/Story";
+import { connect } from 'react-redux'
+import { registerAction } from './actions/registerAction'
 
 // const dummyData = {
 //   sha: { username: "Sha", age: 29, id: 0 },
@@ -44,7 +46,7 @@ const initialFormErrors = {
 const initialUsers = [];
 const initialDisabled = true;
 
-function App() {
+function App(props) {
   const [user, setUser] = useState(initialUsers);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -104,7 +106,9 @@ function App() {
       password: formValues.password.trim(),
       email: formValues.email,
     };
-    postNewUser(newUser);
+    // postNewUser(newUser);
+    props.registerAction(newUser)
+    console.log(newUser)
   };
 
   useEffect(() => {
@@ -159,7 +163,7 @@ function App() {
   );
 }
 
-export default App;
+export default connect(null, {registerAction})(App)
 
 // {
 //   Object.values(user).map((x) => (
