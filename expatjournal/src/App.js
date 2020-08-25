@@ -13,6 +13,7 @@ import { registerAction } from './actions/registerAction'
 
 import PrivateRoute from '../src/components/PrivateRoute'
 
+
 // const dummyData = {
 //   sha: { username: "Sha", age: 29, id: 0 },
 //   tom: { username: "Tom", age: 30, id: 1 },

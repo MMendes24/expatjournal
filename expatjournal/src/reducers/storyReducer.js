@@ -3,6 +3,7 @@ import { ADD_STORY_START, UPDATE_STORY_LIST, ADD_STORY_ERROR } from '../actions/
 import { EDIT_STORY, EDIT_SUCCESS, EDIT_FAIL } from '../actions/editStoryActions'
 import { FETCH_SINGLE_STORY, FETCH_SINGLE_STORY_SUCCESS, FETCH_SINGLE_STORY_FAIL } from '../actions/getStoryActions'
 import { REG_START, REG_SUCCESS, REG_ERROR } from '../actions/registerAction'
+import { LOGIN_START, LOGIN_ERROR, LOGIN_SUCCESS } from '../actions/loginAction'
 
 const initialState = {
     isLoading: false,
@@ -103,6 +104,24 @@ const storyReducer = ( state = initialState, action ) => {
                 ...state,
                 isLoading: false,
                 error: action.payload,
+            }
+        case LOGIN_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: '',
+            }
+        case LOGIN_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                error: '',
+            }
+        case LOGIN_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
             }
         default: return state
     }
