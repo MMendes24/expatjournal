@@ -48,12 +48,14 @@ const handleSubmit = (e) => {
                 value={formInputs.location}
                 onChange={handleChanges}
                 /><br/>
-                <input 
-                type="text"
-                placeholder='Story'
+                <textarea 
+                type="textarea"
+                placeholder='Body'
                 name='story'
                 value={formInputs.story}
                 onChange={handleChanges}
+                rows={5}
+                cols={20}
                 />
                 <button>Add Story</button>
             </form>
