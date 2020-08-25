@@ -10,6 +10,7 @@ import StoryEdit from "./components/StoryEdit";
 import Story from "./components/Story";
 import { connect } from 'react-redux'
 import { registerAction } from './actions/registerAction'
+
 import PrivateRoute from '../src/components/PrivateRoute'
 
 // const dummyData = {
