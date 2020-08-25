@@ -122,7 +122,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Mars Test Header</h1>
+      <h1>Expat Journal</h1>
       <>
         <Switch>
           <Route path="/register">
