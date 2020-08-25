@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -10,7 +11,7 @@ const StyledDiv = styled.div`
 
 const SignUpForm = (props) => {
   const { values, submit, inputChange, disabled, errors } = props;
-
+  const history = useHistory();
   const onSubmit = (evt) => {
     evt.preventDefault();
     submit();
@@ -46,7 +47,7 @@ const SignUpForm = (props) => {
               <input
                 value={values.password}
                 onChange={onInputChange}
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Password"
               />
@@ -63,7 +64,9 @@ const SignUpForm = (props) => {
               />
             </label>
           </div>
-          <button disabled={disabled}>Sign up</button>
+          <button disabled={disabled} onClick={() => history.push("/login")}>
+            Sign up
+          </button>
         </div>
       </StyledDiv>
     </form>

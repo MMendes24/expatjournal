@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import SignUpForm from "./components/SignUpForm";
+import LoginForm from "./components/LoginForm";
 import axios from "axios";
 import * as yup from "yup";
-import { Switch, Route } from 'react-router-dom'
-import Dashboard from './components/Dashboard'
-import AddStory from './components/AddStory'
-import StoryEdit from './components/StoryEdit'
-import Story from './components/Story'
+import { Switch, Route } from "react-router-dom";
+import Dashboard from "./components/Dashboard";
+import AddStory from "./components/AddStory";
+import StoryEdit from "./components/StoryEdit";
+import Story from "./components/Story";
 
 // const dummyData = {
 //   sha: { username: "Sha", age: 29, id: 0 },
@@ -51,7 +52,7 @@ function App() {
 
   const getUsers = () => {
     axios
-      .get("https://reqres.in/api/users") //users
+      .get("https://expatjournal2.netlify.app/") //users
       .then((res) => {
         setUser(res.data);
       })
@@ -112,7 +113,7 @@ function App() {
     console.log(user);
     console.log(initialUsers);
   }, []);
-  
+
   useEffect(() => {
     formSchema.isValid(formValues).then((valid) => {
       setDisabled(!valid);
@@ -120,33 +121,40 @@ function App() {
   }, [formValues]);
 
   return (
-    <div className='App'>
+    <div className="App">
       <h1>Mars Test Header</h1>
-    <>
-      <Switch>
-        <Route path='/register'>
-      <SignUpForm
-        values={formValues}
-        inputChange={inputChange}
-        submit={submit}
-        disabled={disabled}
-        errors={formErrors}
-      />          
-        </Route>
-        <Route path='/dashboard'>
-          <Dashboard />
-        </Route>
-        <Route path='/add-story'>
-          <AddStory />
-        </Route>
-        <Route path='/edit-story'>
-          <StoryEdit />
-        </Route>
-        <Route path='/story/:id'>
-          <Story />
-        </Route>
-      </Switch>
-    </>
+      <>
+        <Switch>
+          <Route path="/register">
+            <SignUpForm
+              values={formValues}
+              inputChange={inputChange}
+              submit={submit}
+              disabled={disabled}
+              errors={formErrors}
+            />
+          </Route>
+          <Route path="/login">
+            <LoginForm
+              values={formValues}
+              inputChange={inputChange}
+              submit={submit}
+            />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/add-story">
+            <AddStory />
+          </Route>
+          <Route path="/edit-story">
+            <StoryEdit />
+          </Route>
+          <Route path="/story/:id">
+            <Story />
+          </Route>
+        </Switch>
+      </>
     </div>
   );
 }
