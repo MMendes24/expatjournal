@@ -1,17 +1,16 @@
-// import axiosWithAuth from '../utils/axiosWithAuth'
-import Axios from 'axios'
+import axiosWithAuth from '../utils/axiosWithAuth'
 
 export const FETCH_SINGLE_STORY = "FETCH_SINGLE_STORY"
 export const FETCH_SINGLE_STORY_SUCCESS = "FETCH_SINGLE_STORY_SUCCESS"
 export const FETCH_SINGLE_STORY_FAIL = "FETCH_SINGLE_STORY_FAIL"
 
-const fetchSingleStory = () => (dispatch) => {
+const fetchSingleStory = id => (dispatch) => {
     dispatch({ type: FETCH_SINGLE_STORY })
 
-    Axios
-    .get('https://reqres.in/api/users/1')
+    axiosWithAuth()
+    .get('/api/stories')
     .then(res => {
-        console.log(res.data)
+        console.log(res)
         dispatch({ type: FETCH_SINGLE_STORY_SUCCESS, payload: res.data })
     })
     .catch(err => {
