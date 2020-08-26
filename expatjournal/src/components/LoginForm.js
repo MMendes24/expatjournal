@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { connect } from 'react-redux'
@@ -12,9 +12,12 @@ const StyledDiv = styled.div`
   padding-top: 40vh;
 `;
 
+
+
 const SigninForm = (props) => {
   const { values, submit, inputChange } = props;
   const history = useHistory();
+
   const onSubmit = (evt) => {
     evt.preventDefault();
     // submit();
@@ -23,9 +26,11 @@ const SigninForm = (props) => {
       password: values.password,
     }
     props.loginAction(newInputObject)
-    history.push('/add-story')
+    history.push('/dashboard')
 
   };
+
+
 
   const onInputChange = (evt) => {
     const { name, value } = evt.target;
@@ -63,5 +68,13 @@ const SigninForm = (props) => {
     </form>
   );
 };
-export default connect(null, {loginAction})(SigninForm);
+
+ const mapStateToProps = state => {
+  console.log(state)
+   return {
+    userId: state.userId
+  }
+}
+
+export default connect(mapStateToProps, {loginAction})(SigninForm);
 

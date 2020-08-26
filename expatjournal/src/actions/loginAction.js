@@ -9,12 +9,14 @@ export const loginAction = (loginValues) => dispatch => {
     .post('/api/auth/login', loginValues)
     .then(res => {
         console.log(res)
+        console.log(res.data.userId)
         localStorage.setItem('token', res.data.token)
-        dispatch({ type: LOGIN_SUCCESS })
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data.userId })
         
     })
     .catch(err => {
         console.log(err)
         dispatch({ type: LOGIN_ERROR, payload: err})
     })
+    
 }
