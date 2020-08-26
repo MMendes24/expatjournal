@@ -12,7 +12,7 @@ const editStory = (editedStory) => (dispatch) => {
     console.log("Dispatch before axiosWithAuth, editStoryActions")
 
     axiosWithAuth()
-    .put('/api/stories/1', editedStory)
+    .put(`/api/stories/1`, editedStory)
     .then(res => {
         console.log(res.data)
         dispatch({ type: EDIT_SUCCESS, payload: res.data })

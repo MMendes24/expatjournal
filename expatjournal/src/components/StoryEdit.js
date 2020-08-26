@@ -45,9 +45,14 @@ const StoryEdit = props => {
         })
     }
 
+    const editedStory = {
+        ...story
+    }
+
     const onSubmit = e => {
         e.preventDefault()
-        editStory()
+        editStory(editedStory)
+
     }
 
     return (
@@ -83,7 +88,7 @@ const StoryEdit = props => {
                     onChange={handleStoryChanges}
                     />
                 </label>
-                <button>Complete</button>
+                <button type="submit">Complete</button>
             </FormStyled>
         </section>
     )
