@@ -23,6 +23,7 @@ const SigninForm = (props) => {
       password: values.password,
     }
     props.loginAction(newInputObject)
+    history.push('/add-story')
 
   };
 
@@ -57,7 +58,7 @@ const SigninForm = (props) => {
             />
           </label>
         </div>
-        <button onClick={() => history.push("/add-story")}>Login</button>
+        <button>Login</button>
       </StyledDiv>
     </form>
   );

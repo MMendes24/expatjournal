@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SignUpForm from "./components/SignUpForm";
 import LoginForm from "./components/LoginForm";
 import axios from "axios";
+import PrivateRoute from './components/privateRoute'
 import * as yup from "yup";
 import { Switch, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
@@ -11,7 +12,7 @@ import Story from "./components/Story";
 import { connect } from 'react-redux'
 import { registerAction } from './actions/registerAction'
 
-import PrivateRoute from './components/privateRoute'
+
 
 
 // const dummyData = {
@@ -131,8 +132,8 @@ function App(props) {
     <div className="App">
       <h1>Expat Journal</h1>
       <>
-        <Switch>
-          <Route path="/register">
+
+          <Route exact path="/register">
             <SignUpForm
               values={formValues}
               inputChange={inputChange}
@@ -141,26 +142,17 @@ function App(props) {
               errors={formErrors}
             />
           </Route>
-          <PrivateRoute path="/dashboard">
-            <Dashboard />
-          </PrivateRoute>
-          <PrivateRoute path="/add-story">
-            <AddStory />
-          </PrivateRoute>
-          <PrivateRoute path="/edit-story">
-            <StoryEdit />
-          </PrivateRoute>
-          <PrivateRoute path="/story/:id">
-            <Story />
-          </PrivateRoute>
-          <Route path="/">
+          <PrivateRoute exact path='/dashboard' component={Dashboard} />
+          <PrivateRoute exact path="story/:id" component={Story} />
+          <PrivateRoute exact path='/edit-story' component={StoryEdit}/>
+          <PrivateRoute exact path='/add-story' component={AddStory}/>
+          <Route exact path="/">
             <LoginForm
               values={formValues}
               inputChange={inputChange}
               submit={submit}
             />
           </Route>
-        </Switch>
       </>
     </div>
   );
