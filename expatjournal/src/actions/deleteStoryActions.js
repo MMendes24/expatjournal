@@ -6,17 +6,17 @@ export const DELETE_FAIL = "DELETE_FAIL"
 
 const deleteStory = () => dispatch => {
     dispatch({ type: DELETE_REQUEST })
-    console.log("Dispatch before axiosWithAuth, editStoryActions")
+    console.log("Dispatch before axiosWithAuth, deleteStoryActions")
 
     axiosWithAuth()
-    .delete('https://reqres.in/api/users/1')
+    .delete('/api/stories/1')
     .then(res => {
         console.log(res.data)
         dispatch({ type: DELETE_SUCCESS })
     })
     .catch(err => {
         console.log(err)
-        dispatch({ type: DELETE_FAIL, payload: "API call to edit failed within deleteStoryActions.js"})
+        dispatch({ type: DELETE_FAIL, payload: "API call to delete failed within deleteStoryActions.js"})
     })
 }
 

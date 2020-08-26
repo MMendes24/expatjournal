@@ -21,8 +21,7 @@ const Story = props => {
     //story functionality (delete), functionality missing due to lack of endpoint and difficulty to simulate without such
     const deleteStory = e => {
         e.preventDefault()
-        deleteStoryActions()
-        history.push("/dashboard")
+        props.deleteStoryActions()
     }
 
     //shape of data (to be removed)
@@ -36,7 +35,7 @@ const Story = props => {
 
     return (
         <section>
-            <img href="https://source.unsplash.com/user/erondu/400x400" alt="nolo"/>
+            <img href="#" alt="nolo"/>
             <h2>Right place!</h2>
             {/* <h1>{props.title}</h1>
             <h2>{props.location}</h2>
@@ -58,4 +57,4 @@ const mapStatetoProps = state => {
     }
 }
 
-export default connect(mapStatetoProps, {fetchSingleStory})(Story)
+export default connect(mapStatetoProps, {deleteStoryActions, fetchSingleStory})(Story)
