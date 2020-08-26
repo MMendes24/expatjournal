@@ -10,8 +10,8 @@ const fetchSingleStory = id => (dispatch) => {
     axiosWithAuth()
     .get(`/api/stories/storyId/${id}`) 
     .then(res => {
-        console.log(res.data)
-        dispatch({ type: FETCH_SINGLE_STORY_SUCCESS, payload: res.data })
+        console.log(res.data[0])
+        dispatch({ type: FETCH_SINGLE_STORY_SUCCESS, payload: res.data[0] })
     })
     .catch(err => {
         console.log(err)

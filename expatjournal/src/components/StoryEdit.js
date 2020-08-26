@@ -36,9 +36,7 @@ const StoryEdit = props => {
 
     useEffect( () => {
         props.fetchSingleStory(1)
-        console.log("LOOK", props.body)
     }, [])
-
 
     const handleStoryChanges = e => {
         setStory({
@@ -98,7 +96,7 @@ const StoryEdit = props => {
 
 const mapStatetoProps = state => {
     console.log(state)
-    console.log(state.body[0])
+    console.log(state.body)
     return {
 
         isLoading: state.isLoading,
