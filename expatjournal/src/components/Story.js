@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
 import { connect } from 'react-redux'
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import fetchSingleStory from '../actions/getStoryActions'
+import deleteStoryActions from '../actions/deleteStoryActions'
 
 const Story = props => {
     const history = useHistory()
+    const params = useParams();
 
     //fetch the individual Story to display when a story is clicked on in the Dashboard
     const fetchStory = () => {
-        props.fetchSingleStory()
-        console.log(props.body)
+        props.fetchSingleStory(params.id)
+        console.log(params.id)
     } 
 
     useEffect(() => {
@@ -20,6 +22,7 @@ const Story = props => {
     //story functionality (delete), functionality missing due to lack of endpoint and difficulty to simulate without such
     const deleteStory = e => {
         e.preventDefault()
+        props.deleteStoryActions()
         history.push("/dashboard")
     }
 
@@ -27,27 +30,24 @@ const Story = props => {
 
     //image
     // title
-    // username?
-    // time
     // location
     // body
 
     return (
         <section>
-            <img href="https://source.unsplash.com/user/erondu/400x400" alt="nolo"/>
-            <h1>{null}</h1>
-            <h2>{null}</h2>
-            <h3>{null}</h3>
-            <h3>{null}</h3>
-            <p>{null}</p>
+            <img href="#" alt="nolo"/>
+            <h2>Right place!</h2>
+            <h1>{props.body.title}</h1>
+            <h2>{props.body.location}</h2>
+            <h3>{props.body.body}</h3>
             <button onClick={deleteStory}>Delete</button>
         </section>
     )
 }
 
 const mapStatetoProps = state => {
+    console.log(state)
     return {
-
         isLoading: state.isLoading,
         error: state.error,
         //from api
@@ -55,4 +55,4 @@ const mapStatetoProps = state => {
     }
 }
 
-export default connect(mapStatetoProps, {fetchSingleStory})(Story)
+export default connect(mapStatetoProps, {deleteStoryActions, fetchSingleStory})(Story)
