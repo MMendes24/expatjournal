@@ -24,7 +24,7 @@ const Dashboard = props => {
                     <div className='story-card'>
                         <h2>{story.title}</h2>
                         <h4>{story.location}</h4>
-                        <h6>{story.time}</h6>
+                        <h6>{story.updated_at}</h6>
                         <p>{story.body}</p>
                     </div>
                 ))}

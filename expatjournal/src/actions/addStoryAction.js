@@ -6,10 +6,10 @@ export const ADD_STORY_ERROR = 'ADD_STORY_ERROR'
 export const addStoryAction = (newStory) => dispatch => {
     dispatch({type: ADD_STORY_START })
     axiosWithAuth()
-    .post('https://reqres.in/api/users', newStory)
+    .post('/api/stories', newStory)
     .then(res => {
         console.log(res)
-        dispatch({type: UPDATE_STORY_LIST, payload: res.data[0]})
+        dispatch({type: UPDATE_STORY_LIST, payload: res.data})
     })
     .catch(err => {
         console.log(err)
