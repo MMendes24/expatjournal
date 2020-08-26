@@ -8,8 +8,8 @@ const Dashboard = props => {
     const { userId } = useParams()
     console.log(userId)
     useEffect(() => {
-        props.getStories()
-    },[])
+        props.getStories(userId)
+    },[props.body.length])
 
     return (
         <div className='dashboard-container'>

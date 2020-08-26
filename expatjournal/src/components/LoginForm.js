@@ -18,7 +18,13 @@ const SigninForm = (props) => {
   const { values, submit, inputChange } = props;
   const history = useHistory();
 
-  const onSubmit = (evt) => {
+  useEffect(() => {
+    if(props.userId) {
+      history.push(`/dashboard/${props.userId}`)
+    }
+  }, [props.userId])
+
+  const onSubmit = async (evt) => {
     evt.preventDefault();
     // submit();
     const newInputObject = {
@@ -26,8 +32,6 @@ const SigninForm = (props) => {
       password: values.password,
     }
     props.loginAction(newInputObject)
-    history.push('/dashboard')
-
   };
 
 

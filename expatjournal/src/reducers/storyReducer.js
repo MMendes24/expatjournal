@@ -45,7 +45,7 @@ const storyReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 isLoading: false,
-                body: [action.payload, ...state.stories]
+                body: [action.payload, ...state.body]
             }
         case ADD_STORY_ERROR:
             return {

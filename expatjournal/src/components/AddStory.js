@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { addStoryAction } from '../actions/addStoryAction'
 import { useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+
 
 
 const initialFormValues = {
@@ -29,10 +31,11 @@ const handleSubmit = (e) => {
     // insert action 
     const newStory = {
         ...formInputs,
-        user_id: 1
+        user_id: props.userId
     }
+    console.log(newStory)
     props.addStoryAction(newStory)
-    history.push('/dashboard')
+    history.push(`/dashboard/${props.userId}`)
 }
     return (
         <div>
@@ -67,8 +70,10 @@ const handleSubmit = (e) => {
     )
 }
 
-// const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
+return {
+    userId: state.userId
+}
 
-
-// }
-export default connect(null, {addStoryAction})(AddStory)
+}
+export default connect(mapStateToProps, {addStoryAction})(AddStory)
