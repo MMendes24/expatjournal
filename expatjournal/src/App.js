@@ -142,6 +142,7 @@ function App(props) {
               errors={formErrors}
             />
           </Route>
+
           <PrivateRoute exact path='/dashboard/:userId' component={Dashboard} />
           <PrivateRoute exact path="story/:id" component={Story} />
           <PrivateRoute exact path='/edit-story' component={StoryEdit}/>

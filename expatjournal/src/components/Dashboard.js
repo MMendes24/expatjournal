@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getStories } from '../actions/getStories'
 import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+
 import styled from 'styled-components'
 
 const DashStyled = styled.div`
@@ -19,7 +20,6 @@ img{
 }
 text-align: center;
 `
-
 
 const Dashboard = props => {
     const history = useHistory()
@@ -49,9 +49,7 @@ const Dashboard = props => {
                         src={story.image_url || "https://source.unsplash.com/random"}
                         />
                         <h2>{story.title}</h2>
-                        {/* <h4>{story.location}</h4>
-                        <h6>{story.updated_at}</h6>
-                        <p>{story.body}</p> */}
+                        <button onClick={() => history.push(`/story/${story.id}`)}>Story</button>
                     </StoryStyled>
                 ))}
             </DashStyled>
