@@ -31,29 +31,30 @@ const initialStory = {
 }
 
 const StoryEdit = props => {
+    const [ story, setStory ] = useState(initialStory)
+    const { id } = useParams()
 
     useEffect( () => {
         props.fetchSingleStory(1)
         console.log("LOOK", props.body)
     }, [])
 
-    const [ story, setStory ] = useState(initialStory)
-    const { id } = useParams()
-
-
-    
 
     const handleStoryChanges = e => {
-        console.log(props.body)
         setStory({
             ...story,
             [e.target.name]: e.target.value
         })
     }
 
+    const editedStory = {
+        ...story
+    }
+
     const onSubmit = e => {
         e.preventDefault()
-        editStory()
+        props.editStory(editedStory)
+        setStory(initialStory)
     }
 
     return (
@@ -89,7 +90,7 @@ const StoryEdit = props => {
                     onChange={handleStoryChanges}
                     />
                 </label>
-                <button>Complete</button>
+                <button type="submit">Submit</button>
             </FormStyled>
         </section>
     )
@@ -104,7 +105,7 @@ const mapStatetoProps = state => {
         error: state.error,
 
         //from api
-        body: state.body,
+        body: state.body[0],
     }
 }
 
