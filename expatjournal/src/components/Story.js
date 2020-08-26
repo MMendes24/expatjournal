@@ -22,7 +22,7 @@ const Story = props => {
     //story functionality (delete), functionality missing due to lack of endpoint and difficulty to simulate without such
     const deleteStory = e => {
         e.preventDefault()
-        props.deleteStoryActions()
+        props.deleteStoryActions(params.id)
         history.push("/dashboard")
     }
 
@@ -41,6 +41,7 @@ const Story = props => {
             <h2>{props.body.location}</h2>
             <h3>{props.body.body}</h3>
             <button onClick={deleteStory}>Delete</button>
+            <button onClick={() => history.push(`/edit-story/${params.id}`)}>Edit</button>
         </section>
     )
 }

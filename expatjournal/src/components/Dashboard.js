@@ -27,7 +27,7 @@ const Dashboard = props => {
     console.log(userId)
     useEffect(() => {
         props.getStories(userId)
-    },[props.body.length])
+    },[])
 
     useEffect(() => { // to make sure on refresh that the id is re inserted
         if(props.userId === ''){
