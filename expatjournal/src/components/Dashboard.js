@@ -26,6 +26,7 @@ const Dashboard = props => {
                         <h4>{story.location}</h4>
                         <h6>{story.updated_at}</h6>
                         <p>{story.body}</p>
+                        <button onClick={() => history.push('/story/:id')}>Story</button>
                     </div>
                 ))}
             </div>
