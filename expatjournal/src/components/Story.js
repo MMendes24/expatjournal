@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
 import { connect } from 'react-redux'
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import fetchSingleStory from '../actions/getStoryActions'
 import deleteStoryActions from '../actions/deleteStoryActions'
 
 const Story = props => {
     const history = useHistory()
+    const params = useParams();
 
     //fetch the individual Story to display when a story is clicked on in the Dashboard
     const fetchStory = () => {
-        props.fetchSingleStory()
-        console.log(props.body)
+        props.fetchSingleStory(params.id)
+        console.log(params.id)
     } 
 
     useEffect(() => {
@@ -22,14 +23,13 @@ const Story = props => {
     const deleteStory = e => {
         e.preventDefault()
         props.deleteStoryActions()
+        history.push("/dashboard")
     }
 
     //shape of data (to be removed)
 
     //image
     // title
-    // username?
-    // time
     // location
     // body
 
@@ -37,11 +37,9 @@ const Story = props => {
         <section>
             <img href="#" alt="nolo"/>
             <h2>Right place!</h2>
-            {/* <h1>{props.title}</h1>
-            <h2>{props.location}</h2>
-            <h3>{props.body}</h3>
-            <h3>{null}</h3>
-            <p>{null}</p> */}
+            <h1>{props.body.title}</h1>
+            <h2>{props.body.location}</h2>
+            <h3>{props.body.body}</h3>
             <button onClick={deleteStory}>Delete</button>
         </section>
     )

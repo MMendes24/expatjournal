@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getStories } from '../actions/getStories'
 import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+
 const Dashboard = props => {
     const history = useHistory()
     const { userId } = useParams()
@@ -26,7 +27,7 @@ const Dashboard = props => {
                         <h4>{story.location}</h4>
                         <h6>{story.updated_at}</h6>
                         <p>{story.body}</p>
-                        <button onClick={() => history.push('/story/:id')}>Story</button>
+                        <button onClick={() => history.push(`/story/${story.id}`)}>Story</button>
                     </div>
                 ))}
             </div>
