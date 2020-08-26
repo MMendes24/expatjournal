@@ -57,7 +57,6 @@ const storyReducer = ( state = initialState, action ) => {
         case EDIT_STORY:
             return {
                 ...state,
-                body: [],
                 isLoading: true,
             }
         case EDIT_SUCCESS:

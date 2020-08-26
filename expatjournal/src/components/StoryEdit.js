@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
 import editStory from '../actions/editStoryActions'
@@ -26,28 +27,32 @@ label {
 const initialStory = {
     title: "",
     location: "",
-    story: "",
+    body: "",
 }
 
 const StoryEdit = props => {
     const [ story, setStory ] = useState(initialStory)
+    const { id } = useParams()
 
-    useEffect(() => {
-        props.fetchSingleStory()
-        console.log(props)
+    useEffect( () => {
+        props.fetchSingleStory(1)
     }, [])
 
     const handleStoryChanges = e => {
-        console.log(props.body)
         setStory({
             ...story,
             [e.target.name]: e.target.value
         })
     }
 
+    const editedStory = {
+        ...story
+    }
+
     const onSubmit = e => {
         e.preventDefault()
-        editStory()
+        props.editStory(editedStory)
+        setStory(initialStory)
     }
 
     return (
@@ -58,7 +63,7 @@ const StoryEdit = props => {
                     <input
                     name="title"
                     type="text"
-                    placeholder="Title"
+                    placeholder="Title..."
                     value={story.title}
                     onChange={handleStoryChanges}
                     />
@@ -76,14 +81,14 @@ const StoryEdit = props => {
 
                 <label>The Story:&nbsp;
                     <input 
-                    name="story"
+                    name="body"
                     type="text"
                     placeholder="Your story..."
-                    value={story.story}
+                    value={story.body}
                     onChange={handleStoryChanges}
                     />
                 </label>
-                <button>Complete</button>
+                <button type="submit">Submit</button>
             </FormStyled>
         </section>
     )
@@ -91,14 +96,15 @@ const StoryEdit = props => {
 
 const mapStatetoProps = state => {
     console.log(state)
+    console.log(state.body)
     return {
 
         isLoading: state.isLoading,
         error: state.error,
 
         //from api
-        body: state.body,
+        body: state.body[0],
     }
 }
 
-export default connect(mapStatetoProps, {editStory, fetchSingleStory})(StoryEdit)
+export default connect(mapStatetoProps, {fetchSingleStory, editStory})(StoryEdit)
