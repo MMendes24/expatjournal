@@ -7,11 +7,11 @@ import { useHistory } from 'react-router-dom'
 const initialFormValues = {
     title: '',
     location: '',
-    story: '',
+    body: '',
 }
 
 
-const AddStory = () => {
+const AddStory = (props) => {
 
     const [formInputs, setFormInputs] = useState(initialFormValues)
     const history = useHistory()
@@ -27,8 +27,12 @@ const AddStory = () => {
 const handleSubmit = (e) => {
     e.preventDefault()
     // insert action 
-    // props.addStoryAction(formInputs)
-    // history.push('/')
+    const newStory = {
+        ...formInputs,
+        user_id: 1
+    }
+    props.addStoryAction(newStory)
+    history.push('/dashboard')
 }
     return (
         <div>
@@ -51,8 +55,8 @@ const handleSubmit = (e) => {
                 <textarea 
                 type="textarea"
                 placeholder='Body'
-                name='story'
-                value={formInputs.story}
+                name='body'
+                value={formInputs.body}
                 onChange={handleChanges}
                 rows={5}
                 cols={20}
@@ -63,8 +67,8 @@ const handleSubmit = (e) => {
     )
 }
 
-const mapStateToProps = (state) => {
+// const mapStateToProps = (state) => {
 
 
-}
-export default connect(mapStateToProps, {addStoryAction})(AddStory)
+// }
+export default connect(null, {addStoryAction})(AddStory)
