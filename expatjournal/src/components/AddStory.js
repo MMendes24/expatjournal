@@ -10,6 +10,7 @@ const initialFormValues = {
     title: '',
     location: '',
     body: '',
+    image_url: '',
 }
 
 
@@ -53,6 +54,13 @@ const handleSubmit = (e) => {
                 placeholder='location'
                 name='location'
                 value={formInputs.location}
+                onChange={handleChanges}
+                /><br/>
+                <input 
+                type="text"
+                placeholder='image-url (optional)'
+                name='image_url'
+                value={formInputs.image_url}
                 onChange={handleChanges}
                 /><br/>
                 <textarea 

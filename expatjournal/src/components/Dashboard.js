@@ -22,6 +22,9 @@ const Dashboard = props => {
             <div className='stories-container'>
                 {props.body.map(story => (
                     <div className='story-card'>
+                        <img
+                        src={story.image_url}
+                        />
                         <h2>{story.title}</h2>
                         <h4>{story.location}</h4>
                         <h6>{story.updated_at}</h6>
