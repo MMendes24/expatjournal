@@ -144,7 +144,7 @@ function App(props) {
           </Route>
           <PrivateRoute exact path='/dashboard' component={Dashboard} />
           <PrivateRoute exact path="/story/:id" component={Story} />
-          <PrivateRoute exact path='/edit-story' component={StoryEdit}/>
+          <PrivateRoute exact path='/edit-story/:id' component={StoryEdit}/>
           <PrivateRoute exact path='/add-story' component={AddStory}/>
           <Route exact path="/">
             <LoginForm
