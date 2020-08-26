@@ -4,6 +4,7 @@ import { EDIT_STORY, EDIT_SUCCESS, EDIT_FAIL } from '../actions/editStoryActions
 import { FETCH_SINGLE_STORY, FETCH_SINGLE_STORY_SUCCESS, FETCH_SINGLE_STORY_FAIL } from '../actions/getStoryActions'
 import { REG_START, REG_SUCCESS, REG_ERROR } from '../actions/registerAction'
 import { LOGIN_START, LOGIN_ERROR, LOGIN_SUCCESS } from '../actions/loginAction'
+import { DELETE_REQUEST, DELETE_SUCCESS, DELETE_FAIL } from '../actions/deleteStoryActions'
 
 const initialState = {
     isLoading: false,
@@ -120,6 +121,22 @@ const storyReducer = ( state = initialState, action ) => {
                 userId: action.payload
             }
         case LOGIN_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+        case DELETE_REQUEST:
+            return {
+                ...state,
+                isLoading: true,
+            }
+        case DELETE_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+            }
+        case DELETE_FAIL:
             return {
                 ...state,
                 isLoading: false,
