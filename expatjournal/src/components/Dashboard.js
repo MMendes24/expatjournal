@@ -11,6 +11,11 @@ const Dashboard = props => {
         props.getStories(userId)
     },[props.body.length])
 
+    useEffect(() => { // to make sure on refresh that the id is re inserted
+        if(props.userId === ''){
+            props.userId = localStorage.getItem('id')
+        }
+    }, [])
     return (
         <div className='dashboard-container'>
         <h1>Welcome to the Dashboard </h1>
