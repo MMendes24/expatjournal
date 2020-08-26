@@ -16,6 +16,7 @@ const SignUpForm = (props) => {
   const onSubmit = (evt) => {
     evt.preventDefault();
     submit();
+    history.push('/')
   };
   const onInputChange = (evt) => {
     const { name, value } = evt.target;
@@ -65,7 +66,7 @@ const SignUpForm = (props) => {
               />
             </label>
           </div>
-          <button type="button" disabled={disabled} onClick={() => history.push("/login")}>
+          <button type="submit" disabled={disabled}>
             Sign up
           </button>
         </div>
@@ -78,3 +79,4 @@ const SignUpForm = (props) => {
 
 export default SignUpForm
 
+// onClick={() => history.push("/")}
