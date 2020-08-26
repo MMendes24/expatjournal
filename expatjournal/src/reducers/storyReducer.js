@@ -9,6 +9,7 @@ const initialState = {
     isLoading: false,
     body: [],
     error: '',
+    userId: '',
 }
 
 
@@ -116,6 +117,7 @@ const storyReducer = ( state = initialState, action ) => {
                 ...state,
                 isLoading: false,
                 error: '',
+                userId: action.payload
             }
         case LOGIN_ERROR:
             return {
