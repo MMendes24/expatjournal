@@ -27,17 +27,21 @@ label {
 const initialStory = {
     title: "",
     location: "",
-    story: "",
+    body: "",
 }
 
 const StoryEdit = props => {
+
+    useEffect( () => {
+        props.fetchSingleStory(1)
+        console.log("LOOK", props.body)
+    }, [])
+
     const [ story, setStory ] = useState(initialStory)
     const { id } = useParams()
 
-    useEffect(() => {
-        props.fetchSingleStory(id)
-        console.log(props)
-    }, [])
+
+    
 
     const handleStoryChanges = e => {
         console.log(props.body)
@@ -60,7 +64,7 @@ const StoryEdit = props => {
                     <input
                     name="title"
                     type="text"
-                    placeholder="Title"
+                    placeholder="Title..."
                     value={story.title}
                     onChange={handleStoryChanges}
                     />
@@ -78,10 +82,10 @@ const StoryEdit = props => {
 
                 <label>The Story:&nbsp;
                     <input 
-                    name="story"
+                    name="body"
                     type="text"
                     placeholder="Your story..."
-                    value={story.story}
+                    value={story.body}
                     onChange={handleStoryChanges}
                     />
                 </label>
@@ -93,6 +97,7 @@ const StoryEdit = props => {
 
 const mapStatetoProps = state => {
     console.log(state)
+    console.log(state.body[0])
     return {
 
         isLoading: state.isLoading,
@@ -103,4 +108,4 @@ const mapStatetoProps = state => {
     }
 }
 
-export default connect(mapStatetoProps, {editStory, fetchSingleStory})(StoryEdit)
+export default connect(mapStatetoProps, {fetchSingleStory, editStory})(StoryEdit)
