@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import editStory from '../actions/editStoryActions'
@@ -26,11 +27,13 @@ label {
 const initialStory = {
     title: "",
     location: "",
-    story: "",
+    body: "",
 }
 
 const StoryEdit = props => {
     const [ story, setStory ] = useState(initialStory)
+    const params = useParams()
+    const history = useHistory()
 
     useEffect(() => {
         props.fetchSingleStory()
@@ -38,7 +41,6 @@ const StoryEdit = props => {
     }, [])
 
     const handleStoryChanges = e => {
-        console.log(props.body)
         setStory({
             ...story,
             [e.target.name]: e.target.value
@@ -51,7 +53,9 @@ const StoryEdit = props => {
 
     const onSubmit = e => {
         e.preventDefault()
-        editStory(editedStory)
+        console.log(editedStory)
+        props.editStory(params.id, editedStory)
+        history.push(`/story/${params.id}`)
 
     }
 
@@ -81,10 +85,10 @@ const StoryEdit = props => {
 
                 <label>The Story:&nbsp;
                     <input 
-                    name="story"
+                    name="body"
                     type="text"
                     placeholder="Your story..."
-                    value={story.story}
+                    value={story.body}
                     onChange={handleStoryChanges}
                     />
                 </label>

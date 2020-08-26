@@ -23,7 +23,7 @@ const Story = props => {
     const deleteStory = e => {
         e.preventDefault()
         props.deleteStoryActions(params.id)
-        history.push("/dashboard")
+        history.push(`/dashboard/${props.userId}`)
     }
 
     //shape of data (to be removed)
@@ -52,7 +52,8 @@ const mapStatetoProps = state => {
         isLoading: state.isLoading,
         error: state.error,
         //from api
-        body: state.body
+        body: state.body,
+        userId: state.userId,
     }
 }
 
