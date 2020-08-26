@@ -41,6 +41,7 @@ const Story = props => {
             <h2>{props.body.location}</h2>
             <h3>{props.body.body}</h3>
             <button onClick={deleteStory}>Delete</button>
+            <button onClick={() => history.push(`/edit-story`)}>Edit</button>
         </section>
     )
 }
