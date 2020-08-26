@@ -4,12 +4,12 @@ export const DELETE_REQUEST = "DELETE_REQUEST"
 export const DELETE_SUCCESS = "DELETE_SUCCESS"
 export const DELETE_FAIL = "DELETE_FAIL"
 
-const deleteStory = () => dispatch => {
+const deleteStory = id => dispatch => {
     dispatch({ type: DELETE_REQUEST })
     console.log("Dispatch before axiosWithAuth, deleteStoryActions")
 
     axiosWithAuth()
-    .delete('/api/stories/1')
+    .delete(`/api/stories/${id}`)
     .then(res => {
         console.log(res.data)
         dispatch({ type: DELETE_SUCCESS })

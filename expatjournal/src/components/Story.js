@@ -22,7 +22,7 @@ const Story = props => {
     //story functionality (delete), functionality missing due to lack of endpoint and difficulty to simulate without such
     const deleteStory = e => {
         e.preventDefault()
-        props.deleteStoryActions()
+        props.deleteStoryActions(params.id)
         history.push("/dashboard")
     }
 

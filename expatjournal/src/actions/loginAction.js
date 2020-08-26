@@ -11,6 +11,7 @@ export const loginAction = (loginValues) => dispatch => {
         console.log(res)
         console.log(res.data.userId)
         localStorage.setItem('token', res.data.token)
+        localStorage.setItem('user_id', res.data.userId)
         dispatch({ type: LOGIN_SUCCESS, payload: res.data.userId })
         
     })
