@@ -6,7 +6,7 @@ export const FETCH_STORIES_ERROR = 'FETCH_STORIES_ERROR'
 export const getStories = (userId) => dispatch => {
     dispatch({type: FETCH_STORIES_START })
     axiosWithAuth()
-    .get(`/api/stories`)
+    .get(`/api/stories/user/${userId}`)
     .then(res => {
         console.log(res)
         dispatch({type: FETCH_STORIES_SUCCESS, payload: res.data})
