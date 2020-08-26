@@ -55,8 +55,7 @@ const StoryEdit = props => {
         e.preventDefault()
         console.log(editedStory)
         props.editStory(params.id, editedStory)
-        history.push(`/story/${params.id}`)
-
+        history.push(`/dashboard/${props.userId}`)
     }
 
     return (
@@ -107,6 +106,7 @@ const mapStatetoProps = state => {
 
         //from api
         body: state.body,
+        userId: state.userId,
     }
 }
 
