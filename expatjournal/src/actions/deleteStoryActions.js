@@ -6,7 +6,6 @@ export const DELETE_FAIL = "DELETE_FAIL"
 
 const deleteStory = id => dispatch => {
     dispatch({ type: DELETE_REQUEST })
-    console.log("Dispatch before axiosWithAuth, deleteStoryActions")
 
     axiosWithAuth()
     .delete(`/api/stories/${id}`)
