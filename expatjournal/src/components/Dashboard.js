@@ -44,12 +44,11 @@ const Dashboard = props => {
         {props.body.length > 0 ? (
             <DashStyled className='stories-container'>
                 {props.body.map(story => (
-                    <StoryStyled className='story-card'>
+                    <StoryStyled onClick={() => history.push(`/story/${story.id}`)} className='story-card'>
                         <img
                         src={story.image_url || "https://source.unsplash.com/random"}
                         />
                         <h2>{story.title}</h2>
-                        <button onClick={() => history.push(`/story/${story.id}`)}>Story</button>
                     </StoryStyled>
                 ))}
             </DashStyled>
