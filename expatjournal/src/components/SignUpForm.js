@@ -2,12 +2,28 @@ import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
-
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 40vh;
+`;
+
+const StyledButton = styled.button`
+  background-color: #005a87;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1% 0%;
+  transition-duration: 0.8s;
+  &:hover {
+    background-color: #4caf50;
+    color: white;
+  }
 `;
 
 const SignUpForm = (props) => {
@@ -16,7 +32,7 @@ const SignUpForm = (props) => {
   const onSubmit = (evt) => {
     evt.preventDefault();
     submit();
-    history.push('/')
+    history.push("/");
   };
   const onInputChange = (evt) => {
     const { name, value } = evt.target;
@@ -24,7 +40,7 @@ const SignUpForm = (props) => {
   };
 
   return (
-    <form className="form container" onSubmit={onSubmit}>
+    <form className="form-container" onSubmit={onSubmit}>
       <StyledDiv>
         <h2>Sign up</h2>
         <div className="errors">
@@ -66,17 +82,15 @@ const SignUpForm = (props) => {
               />
             </label>
           </div>
-          <button type="submit" disabled={disabled}>
+          <StyledButton type="submit" disabled={disabled}>
             Sign up
-          </button>
+          </StyledButton>
         </div>
       </StyledDiv>
     </form>
   );
 };
 
-
-
-export default SignUpForm
+export default SignUpForm;
 
 // onClick={() => history.push("/")}
