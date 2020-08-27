@@ -16,6 +16,7 @@ const StyledSection = styled.section`
 const Story = props => {
     const history = useHistory()
     const params = useParams();
+    let isPhoto = false
 
     //fetch the individual Story to display when a story is clicked on in the Dashboard
     const fetchStory = () => {
@@ -26,6 +27,7 @@ const Story = props => {
     useEffect(() => {
         fetchStory()
         // eslint-disable-next-line react-hooks/exhaustive-deps
+        isPhoto = true
     }, [])
 
     const deleteStory = e => {
@@ -37,7 +39,7 @@ const Story = props => {
     return (
         <StyledSection>
             <h1 className="story-heading">{props.body.title}</h1>
-            <img className="story-img" src="https://source.unsplash.com/random/400x400" alt="completely random"/>
+            <img className="story-img" src={isPhoto = true ? props.body.image_url: "https://source.unsplash.com/random/400x400"} alt="completely random"/>
             <h2 className="story-subheading">{props.body.location}</h2>
             <p className="story-body">{props.body.body}</p>
             <button className="story-button" onClick={deleteStory}>Delete</button>
