@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { addStoryAction } from '../actions/addStoryAction'
 import { useHistory } from 'react-router-dom'
+
 
 
 const initialFormValues = {
@@ -30,11 +31,11 @@ const handleSubmit = (e) => {
     // insert action 
     const newStory = {
         ...formInputs,
-        user_id: props.userId
+        user_id: localStorage.getItem('user_id')
     }
     console.log(newStory)
     props.addStoryAction(newStory)
-    history.push(`/dashboard/${props.userId}`)
+    history.push(`/dashboard/${newStory.user_id}`)
 }
     return (
         <div className='add-story-form'>

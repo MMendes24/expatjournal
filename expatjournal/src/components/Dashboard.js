@@ -42,7 +42,7 @@ const Dashboard = props => {
 
     useEffect(() => { // to make sure on refresh that the id is re inserted
         if(props.userId === ''){
-            props.userId = localStorage.getItem('id')
+            props.userId = localStorage.getItem('user_id')
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
