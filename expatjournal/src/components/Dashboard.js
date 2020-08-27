@@ -66,12 +66,13 @@ const Dashboard = props => {
 
                         <img
                         src={story.image_url || "https://source.unsplash.com/random"}
+                        alt=""
                         />
                         <h2>{story.title}</h2>
                     </StoryStyled>
                 ))}
             </DashStyled>
-        ): <h3>Add your first story!</h3>}
+        ): <h4>Add your first story!</h4>}
         </div>
     )
 }

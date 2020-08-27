@@ -1,10 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { useHistory } from 'react-router-dom'
-
-const Navbar = () => {
-
     const StyledNav = styled.nav`
     display:flex;
     justify-content: space-around;
@@ -24,12 +20,11 @@ const Navbar = () => {
     }
     a:hover{
         font-size: 2.2rem;
+        transition: 0.3s;
     }
     `
-
-
+const Navbar = () => {
     const id = localStorage.getItem('user_id')
-    const history = useHistory()
     return (
         <StyledNav className='nav-bar'>
             <h1>The World Through My Eyes</h1>
