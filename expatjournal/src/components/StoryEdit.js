@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import editStory from '../actions/editStoryActions'
+import axiosWithAuth from '../utils/axiosWithAuth'
 
 const FormStyled = styled.form`
 
@@ -35,12 +36,34 @@ const initialStory = {
     title: "",
     location: "",
     body: "",
+    image_url: "",
 }
 
 const StoryEdit = props => {
     const [ story, setStory ] = useState(initialStory)
     const params = useParams()
     const history = useHistory()
+    let isPhoto = false
+
+    useEffect(() => {
+        axiosWithAuth()
+        .get(`/api/stories/storyId/${params.id}`)
+        .then(res => {
+            console.log(res.data)
+            setStory({
+                ...story,
+                title: res.data[0].title,
+                location: res.data[0].location,
+                body: res.data[0].body,
+                image_url: res.data[0].image_url,
+            })
+            isPhoto = true
+        })
+        .catch(err => {
+            console.error("Oh no! Why would you???")
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [params.id])
 
     const handleStoryChanges = e => {
         setStory({
@@ -62,7 +85,7 @@ const StoryEdit = props => {
 
     return (
         <SectionStyled>
-            <img className="story-img" src="https://source.unsplash.com/random/400x400" alt="completely random"/>
+            <img className="story-img" src={isPhoto = true ? props.body.image_url: "https://source.unsplash.com/random/400x400"} alt="completely random"/>
             <FormStyled onSubmit={onSubmit}>
 
                 <label className="story-subheading">New Title:&nbsp;</label>
@@ -71,6 +94,15 @@ const StoryEdit = props => {
                     type="text"
                     placeholder="Title"
                     value={story.title}
+                    onChange={handleStoryChanges}
+                    />
+
+                <label className="story-subheading">New Image:&nbsp;</label>
+                <input
+                    name="image_url"
+                    type="text"
+                    placeholder="URL..."
+                    value={story.image_url}
                     onChange={handleStoryChanges}
                     />
 

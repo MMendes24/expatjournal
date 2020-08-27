@@ -85,6 +85,7 @@ h1 {
 .story-body {
     font-family: 'Patrick Hand', cursive;
     color: black;
+    font-size: 2rem;
 }
 
 .story-button {
