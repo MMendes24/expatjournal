@@ -36,6 +36,7 @@ const initialStory = {
     title: "",
     location: "",
     body: "",
+    image_url: "",
 }
 
 const StoryEdit = props => {
@@ -90,6 +91,15 @@ const StoryEdit = props => {
                     type="text"
                     placeholder="Title"
                     value={story.title}
+                    onChange={handleStoryChanges}
+                    />
+
+                <label className="story-subheading">New Image:&nbsp;</label>
+                <input
+                    name="image_url"
+                    type="text"
+                    placeholder="URL..."
+                    value={story.image_url}
                     onChange={handleStoryChanges}
                     />
 
