@@ -39,7 +39,7 @@ const handleSubmit = (e) => {
     history.push(`/dashboard/${props.userId}`)
 }
     return (
-        <div>
+        <div className='add-story-form'>
             <form onSubmit={handleSubmit}>
                 <h2>Add a new Story</h2>
                 <input 
@@ -63,16 +63,17 @@ const handleSubmit = (e) => {
                 value={formInputs.image_url}
                 onChange={handleChanges}
                 /><br/>
-                <textarea 
+                <textarea className='text-area' 
                 type="textarea"
                 placeholder='Body'
                 name='body'
                 value={formInputs.body}
                 onChange={handleChanges}
-                rows={5}
-                cols={20}
+                rows={10}
+                cols={50}
                 />
-                <button>Add Story</button>
+                <br/>
+                <button className='dashboard-buttons'>Add Story</button>
             </form>
         </div>
     )

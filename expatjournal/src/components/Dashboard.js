@@ -10,15 +10,25 @@ const DashStyled = styled.div`
 display:flex;
 flex-wrap:wrap;
 justify-content: space-around;
+
 `
 const StoryStyled = styled.div`
 width: 24%;
 img{
     width: 100%;
-    height: 50%;
+    height: 70%;
     border-radius: 10px;
 }
+font-size: 2.5rem;
+p{
+    font-size: 1.5rem;
+}
 text-align: center;
+margin-bottom: 1%;
+font-family: 'Patrick Hand', cursive;
+button{
+    width: 100%;
+}
 `
 
 const Dashboard = props => {
@@ -36,20 +46,24 @@ const Dashboard = props => {
     }, [])
     return (
         <div className='dashboard-container'>
+        <div className='dashboard-header'>
         <h1>Welcome to the Dashboard </h1>
-        <button onClick={() => history.push('/add-story')}>Add Story</button>
+        <br/>
+        <button className='button'onClick={() => history.push('/add-story')}>Add Story</button>
+        </div>
 
         {props.isLoading ? <h4>Loading your stories.. Please wait a moment.</h4> : null}
         {props.error ? <h4>There was an error <br/> {props.error}</h4> : null}
         {props.body.length > 0 ? (
             <DashStyled className='stories-container'>
                 {props.body.map(story => (
-                    <StoryStyled className='story-card'>
+                    <StoryStyled className='story-card story-img'>
                         <img
                         src={story.image_url || "https://source.unsplash.com/random"}
                         />
                         <h2>{story.title}</h2>
-                        <button onClick={() => history.push(`/story/${story.id}`)}>Story</button>
+                        <p>{story.updated_at}</p>
+                        <button className='dashboard-buttons' onClick={() => history.push(`/story/${story.id}`)}>Story Details</button>
                     </StoryStyled>
                 ))}
             </DashStyled>
