@@ -27,12 +27,14 @@ const Dashboard = props => {
     console.log(userId)
     useEffect(() => {
         props.getStories(userId)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[props.body.length])
 
     useEffect(() => { // to make sure on refresh that the id is re inserted
         if(props.userId === ''){
             props.userId = localStorage.getItem('id')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <div className='dashboard-container'>

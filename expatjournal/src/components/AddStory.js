@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { addStoryAction } from '../actions/addStoryAction'
 import { useHistory } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
-
 
 
 const initialFormValues = {
