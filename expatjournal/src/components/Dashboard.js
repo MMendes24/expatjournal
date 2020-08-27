@@ -60,7 +60,7 @@ const Dashboard = props => {
             <DashStyled className='stories-container'>
                 {props.body.map(story => (
 
-                    <StoryStyled onClick={() => history.push(`/story/${story.id}`)} className='story-card story-img'>
+                    <StoryStyled onClick={() => history.push(`/story/${story.id}`)} className='story-card dashboard-img'>
 
 
 
