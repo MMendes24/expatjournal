@@ -4,7 +4,6 @@ import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import editStory from '../actions/editStoryActions'
-import fetchSingleStory from '../actions/getStoryActions'
 
 const FormStyled = styled.form`
 
@@ -12,6 +11,7 @@ display: flex;
 flex-flow: column;
 justify-content: center;
 align-items: center;
+margin: 2% 0%;
 
 label {
     font-size: 1.5rem;
@@ -23,6 +23,13 @@ label {
  }
 
 ` 
+const SectionStyled = styled.section`
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+`
+
 
 const initialStory = {
     title: "",
@@ -34,11 +41,6 @@ const StoryEdit = props => {
     const [ story, setStory ] = useState(initialStory)
     const params = useParams()
     const history = useHistory()
-
-    useEffect(() => {
-        props.fetchSingleStory()
-        console.log(props)
-    }, [])
 
     const handleStoryChanges = e => {
         setStory({
@@ -59,10 +61,11 @@ const StoryEdit = props => {
     }
 
     return (
-        <section>
+        <SectionStyled>
+            <img className="story-img" src="https://source.unsplash.com/random/400x400" alt="completely random"/>
             <FormStyled onSubmit={onSubmit}>
 
-                <label>Title:&nbsp;
+                <label className="story-subheading">New Title:&nbsp;</label>
                     <input
                     name="title"
                     type="text"
@@ -70,9 +73,8 @@ const StoryEdit = props => {
                     value={story.title}
                     onChange={handleStoryChanges}
                     />
-                </label>
 
-                <label>Location:&nbsp;
+                <label className="story-subheading">New Location:&nbsp;</label>
                     <input
                     name="location"
                     type="text"
@@ -80,20 +82,20 @@ const StoryEdit = props => {
                     value={story.location}
                     onChange={handleStoryChanges}
                     />
-                </label>
-
-                <label>The Story:&nbsp;
-                    <input 
+                
+                <label className="story-subheading">The New Story:&nbsp;</label>
+                    <textarea
                     name="body"
                     type="text"
+                    rows="4" 
+                    cols="50"
                     placeholder="Your story..."
                     value={story.body}
                     onChange={handleStoryChanges}
                     />
-                </label>
-                <button type="submit">Complete</button>
+                <button className="story-button" type="submit">Complete</button>
             </FormStyled>
-        </section>
+        </SectionStyled>
     )
 }
 
@@ -110,4 +112,4 @@ const mapStatetoProps = state => {
     }
 }
 
-export default connect(mapStatetoProps, {editStory, fetchSingleStory})(StoryEdit)
+export default connect(mapStatetoProps, {editStory})(StoryEdit)

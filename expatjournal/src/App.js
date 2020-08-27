@@ -4,7 +4,7 @@ import LoginForm from "./components/LoginForm";
 import axios from "axios";
 import PrivateRoute from './components/privateRoute'
 import * as yup from "yup";
-import { Switch, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import AddStory from "./components/AddStory";
 import StoryEdit from "./components/StoryEdit";
@@ -12,8 +12,7 @@ import Story from "./components/Story";
 import { connect } from 'react-redux'
 import { registerAction } from './actions/registerAction'
 
-
-
+import './App.css'
 
 // const dummyData = {
 //   sha: { username: "Sha", age: 29, id: 0 },
@@ -130,7 +129,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <h1>Expat Journal</h1>
+      <h1>The World Through My Eyes</h1>
       <>
 
           <Route exact path="/register">

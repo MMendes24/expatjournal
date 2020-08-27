@@ -1,9 +1,17 @@
 import React, { useEffect } from "react";
 import { connect } from 'react-redux'
 import { useHistory, useParams } from "react-router-dom";
+import styled from 'styled-components'
 
 import fetchSingleStory from '../actions/getStoryActions'
 import deleteStoryActions from '../actions/deleteStoryActions'
+
+const StyledSection = styled.section`
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+`
 
 const Story = props => {
     const history = useHistory()
@@ -34,15 +42,14 @@ const Story = props => {
     // body
 
     return (
-        <section>
-            <img href="#" alt="nolo"/>
-            <h2>Right place!</h2>
-            <h1>{props.body.title}</h1>
-            <h2>{props.body.location}</h2>
-            <h3>{props.body.body}</h3>
-            <button onClick={deleteStory}>Delete</button>
-            <button onClick={() => history.push(`/edit-story/${params.id}`)}>Edit</button>
-        </section>
+        <StyledSection>
+            <h1 className="story-heading">{props.body.title}</h1>
+            <img className="story-img" src="https://source.unsplash.com/random/400x400" alt="completely random"/>
+            <h2 className="story-subheading">{props.body.location}</h2>
+            <p className="story-body">{props.body.body}</p>
+            <button className="story-button" onClick={deleteStory}>Delete</button>
+            <button className="story-button" onClick={() => history.push(`/edit-story/${params.id}`)}>Edit</button>
+        </StyledSection>
     )
 }
 
