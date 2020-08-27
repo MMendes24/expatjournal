@@ -3,62 +3,56 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-} */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+*/
 /* HTML5 display-role reset for older browsers */
- article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
 }
+
 body {
-	line-height: 1;
+    line-height: 1;
 }
+
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
+
 blockquote, q {
-	quotes: none;
+    quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
 }
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Permanent+Marker&display=swap');
-
-
-*{
+* {
     /* color: Green;
     border: 1px solid green */
 }
+
 body {
     background: url("./assets/background.png");
     background-repeat: repeat;
-  }
+}
 
-h1{
+h1 {
     font-size: 3.5em;
     font-family: 'Permanent Marker', cursive;
     color: black;
@@ -67,6 +61,11 @@ h1{
 
 .story-heading {
     margin: 2% 0%;
+}
+
+.form-container {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.5em;
 }
 
 .story-subheading {
@@ -78,11 +77,10 @@ h1{
 
 .story-img {
     box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.2), 0 20px 40px 0 rgba(0, 0, 0, 0.19);
-    padding:2rem 2rem 6rem 2rem;
-    border-radius:1%;
-    background:rgba(255, 255, 255, 0.808);
+    padding: 2rem 2rem 6rem 2rem;
+    border-radius: 1%;
+    background: rgba(255, 255, 255, 0.808);
 }
-
 
 .story-body {
     font-family: 'Patrick Hand', cursive;
@@ -90,7 +88,8 @@ h1{
 }
 
 .story-button {
-    background-color: #008CBA; /* Green */
+    background-color: #008CBA;
+    /* Green */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -101,31 +100,70 @@ h1{
     margin: 1% 0%;
 }
 
-h3{
+h3 {
     font-family: 'Patrick Hand', cursive;
     color: black;
-    
 }
-.title{
-    display:flex;
+
+.title {
+    display: flex;
     justify-content: space-between;
 }
+
 header {
-    display:flex;
+    display: flex;
     /* flex-direction:row-reverse; */
-    text-align:center;
+    text-align: center;
     align-items: center;
     justify-content: space-evenly;
     margin: 3% auto;
 }
-.button{
-    display:flex;
+
+.button {
+    display: flex;
     /* flex-direction:row-reverse; */
-    text-align:center;
+    text-align: center;
     align-items: center;
     justify-content: space-evenly;
-    font-family:'Patrick Hand', cursive;
+    font-family: 'Patrick Hand', cursive;
     font-size: 2rem;
     margin: 3rem;
-    text-decoration:none;
+    text-decoration: none;
+}
+
+.dashboard-header {
+    text-align: center;
+}
+
+.dashboard-buttons {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.add-story-form {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: darkgray;
+    margin: 0 30%;
+    padding: 3% 0;
+    border-radius: 10px;
+}
+
+.add-story-form h2 {
+    font-size: 2rem;
+    font-family: 'Patrick Hand', cursive;
+}
+
+.add-story-form input {
+    width: 100%;
+}
+
+.text-area {
+    width: 100%;
 }
