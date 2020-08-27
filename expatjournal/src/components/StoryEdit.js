@@ -43,6 +43,7 @@ const StoryEdit = props => {
     const [ story, setStory ] = useState(initialStory)
     const params = useParams()
     const history = useHistory()
+    let isPhoto = false
 
     useEffect(() => {
         axiosWithAuth()
@@ -54,7 +55,9 @@ const StoryEdit = props => {
                 title: res.data[0].title,
                 location: res.data[0].location,
                 body: res.data[0].body,
+                image_url: res.data[0].image_url,
             })
+            isPhoto = true
         })
         .catch(err => {
             console.error("Oh no! Why would you???")
@@ -82,7 +85,7 @@ const StoryEdit = props => {
 
     return (
         <SectionStyled>
-            <img className="story-img" src="https://source.unsplash.com/random/400x400" alt="completely random"/>
+            <img className="story-img" src={isPhoto = true ? props.body.image_url: "https://source.unsplash.com/random/400x400"} alt="completely random"/>
             <FormStyled onSubmit={onSubmit}>
 
                 <label className="story-subheading">New Title:&nbsp;</label>
