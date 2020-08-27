@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import editStory from '../actions/editStoryActions'
+import axiosWithAuth from '../utils/axiosWithAuth'
 
 const FormStyled = styled.form`
 
@@ -41,6 +42,23 @@ const StoryEdit = props => {
     const [ story, setStory ] = useState(initialStory)
     const params = useParams()
     const history = useHistory()
+
+    useEffect(() => {
+        axiosWithAuth()
+        .get(`/api/stories/storyId/${params.id}`)
+        .then(res => {
+            console.log(res.data)
+            setStory({
+                ...story,
+                title: res.data[0].title,
+                location: res.data[0].location,
+                body: res.data[0].body,
+            })
+        })
+        .catch(err => {
+            console.error("Oh no! Why would you???")
+        })
+    }, [params.id])
 
     const handleStoryChanges = e => {
         setStory({
