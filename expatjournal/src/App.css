@@ -1,0 +1,130 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+} */
+/* HTML5 display-role reset for older browsers */
+ article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Permanent+Marker&display=swap');
+
+
+*{
+    /* color: Green;
+    border: 1px solid green */
+}
+body {
+    background: url("./assets/background.png");
+    background-repeat: repeat;
+  }
+
+h1{
+    font-size: 3.5em;
+    font-family: 'Permanent Marker', cursive;
+    color: black;
+    margin: 3% auto;
+}
+
+.story-heading {
+    margin: 2% 0%;
+}
+
+.story-subheading {
+    font-size: 2.5rem;
+    font-family: 'Permanent Marker', cursive;
+    color: black;
+    margin: 1% 0%;
+}
+
+.story-img {
+    box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.2), 0 20px 40px 0 rgba(0, 0, 0, 0.19);
+    padding:2rem 2rem 6rem 2rem;
+    border-radius:1%;
+    background:rgba(255, 255, 255, 0.808);
+}
+
+.story-body {
+    font-family: 'Patrick Hand', cursive;
+    color: black;
+}
+
+.story-button {
+    background-color: #008CBA; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2% 0%;
+}
+
+h3{
+    font-family: 'Patrick Hand', cursive;
+    color: black;
+    
+}
+.title{
+    display:flex;
+    justify-content: space-between;
+}
+header {
+    display:flex;
+    /* flex-direction:row-reverse; */
+    text-align:center;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 3% auto;
+}
+.button{
+    display:flex;
+    /* flex-direction:row-reverse; */
+    text-align:center;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family:'Patrick Hand', cursive;
+    font-size: 2rem;
+    margin: 3rem;
+    text-decoration:none;
+}

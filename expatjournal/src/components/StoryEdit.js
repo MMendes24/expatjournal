@@ -4,7 +4,6 @@ import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import editStory from '../actions/editStoryActions'
-import fetchSingleStory from '../actions/getStoryActions'
 
 const FormStyled = styled.form`
 
@@ -34,11 +33,6 @@ const StoryEdit = props => {
     const [ story, setStory ] = useState(initialStory)
     const params = useParams()
     const history = useHistory()
-
-    useEffect(() => {
-        props.fetchSingleStory()
-        console.log(props)
-    }, [])
 
     const handleStoryChanges = e => {
         setStory({
@@ -110,4 +104,4 @@ const mapStatetoProps = state => {
     }
 }
 
-export default connect(mapStatetoProps, {editStory, fetchSingleStory})(StoryEdit)
+export default connect(mapStatetoProps, {editStory})(StoryEdit)
