@@ -58,6 +58,7 @@ const StoryEdit = props => {
         .catch(err => {
             console.error("Oh no! Why would you???")
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params.id])
 
     const handleStoryChanges = e => {

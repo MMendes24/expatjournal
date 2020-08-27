@@ -28,19 +28,11 @@ const Story = props => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    //story functionality (delete), functionality missing due to lack of endpoint and difficulty to simulate without such
     const deleteStory = e => {
         e.preventDefault()
         props.deleteStoryActions(params.id)
         history.push(`/dashboard/${props.userId}`)
     }
-
-    //shape of data (to be removed)
-
-    //image
-    // title
-    // location
-    // body
 
     return (
         <StyledSection>
