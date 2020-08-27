@@ -5,11 +5,8 @@ export const EDIT_SUCCESS = "EDIT_SUCCESS"
 export const EDIT_FAIL = "EDIT_FAIL"
 
 const editStory = (id, editedStory) => (dispatch) => {
-    console.log("You hit Edit")
 
     dispatch({ type: EDIT_STORY })
-    
-    console.log("Dispatch before axiosWithAuth, editStoryActions")
 
     axiosWithAuth()
     .put(`/api/stories/${id}`, editedStory)

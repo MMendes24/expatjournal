@@ -25,6 +25,7 @@ const Story = props => {
 
     useEffect(() => {
         fetchStory()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     //story functionality (delete), functionality missing due to lack of endpoint and difficulty to simulate without such

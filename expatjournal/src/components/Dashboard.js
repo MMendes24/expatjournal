@@ -37,12 +37,14 @@ const Dashboard = props => {
     console.log(userId)
     useEffect(() => {
         props.getStories(userId)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[props.body.length])
 
     useEffect(() => { // to make sure on refresh that the id is re inserted
         if(props.userId === ''){
             props.userId = localStorage.getItem('id')
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <div className='dashboard-container'>
@@ -57,13 +59,15 @@ const Dashboard = props => {
         {props.body.length > 0 ? (
             <DashStyled className='stories-container'>
                 {props.body.map(story => (
-                    <StoryStyled className='story-card story-img'>
+
+                    <StoryStyled onClick={() => history.push(`/story/${story.id}`)} className='story-card story-img'>
+
+
+
                         <img
                         src={story.image_url || "https://source.unsplash.com/random"}
                         />
                         <h2>{story.title}</h2>
-                        <p>{story.updated_at}</p>
-                        <button className='dashboard-buttons' onClick={() => history.push(`/story/${story.id}`)}>Story Details</button>
                     </StoryStyled>
                 ))}
             </DashStyled>

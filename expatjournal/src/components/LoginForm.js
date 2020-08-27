@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
-import { loginAction } from "../actions/loginAction";
-import SignUpForm from "./SignUpForm";
+import { connect } from 'react-redux'
+import { loginAction } from '../actions/loginAction'
 
 const StyledDiv = styled.div`
   display: flex;
@@ -30,14 +29,17 @@ const StyledButton = styled.button`
 `;
 
 const SigninForm = (props) => {
-  const { values, submit, inputChange } = props;
+  const { values, /*submit,*/ inputChange } = props;
   const history = useHistory();
 
   useEffect(() => {
     if (props.userId) {
       history.push(`/dashboard/${props.userId}`);
     }
-  }, [props.userId]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.userId])
+
 
   const onSubmit = async (evt) => {
     evt.preventDefault();
