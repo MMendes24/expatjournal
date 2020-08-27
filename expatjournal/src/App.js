@@ -9,6 +9,7 @@ import Dashboard from "./components/Dashboard";
 import AddStory from "./components/AddStory";
 import StoryEdit from "./components/StoryEdit";
 import Story from "./components/Story";
+import Navbar from './components/Navbar'
 import { connect } from 'react-redux'
 import { registerAction } from './actions/registerAction'
 
@@ -131,7 +132,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <h1>The World Through My Eyes</h1>
+      <Navbar />
       <>
 
           <Route exact path="/register">
