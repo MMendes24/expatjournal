@@ -9,6 +9,7 @@ const StyledNav = styled.nav`
     padding: 1%;
     font-size: 1.8rem;
     text-decoration:none;
+    
     h2 {
         font-size: 2.4rem;
         text-align:left;
