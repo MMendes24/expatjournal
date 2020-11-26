@@ -35,7 +35,7 @@ const StyledButton = styled.button`
     background-color: #4caf50;
     color: white;
   }
-`;
+`
 
 const SignUpForm = (props) => {
   const { values, submit, inputChange, disabled, errors } = props;
@@ -93,5 +93,3 @@ const SignUpForm = (props) => {
 };
 
 export default SignUpForm;
-
-// onClick={() => history.push("/")}

@@ -32,7 +32,6 @@ const Navbar = () => {
     return (
         <StyledNav className='nav-bar'>
             <h2>Expatjournal</h2>
-            <Link to={`/register`}>Home</Link>
             <Link to='/'>Login</Link>
             <Link to={`/dashboard/${id}`}>Dashboard</Link>
         </StyledNav>

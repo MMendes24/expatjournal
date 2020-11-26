@@ -40,7 +40,7 @@ const StyledButton = styled.button`
 `;
 
 const SigninForm = (props) => {
-  const { values, /*submit,*/ inputChange } = props;
+  const { values, inputChange } = props;
   const history = useHistory();
 
   useEffect(() => {
@@ -54,7 +54,6 @@ const SigninForm = (props) => {
 
   const onSubmit = async (evt) => {
     evt.preventDefault();
-    // submit();
     const newInputObject = {
       username: values.username,
       password: values.password,
@@ -71,24 +70,24 @@ const SigninForm = (props) => {
     <form className="form-container" onSubmit={onSubmit}>
       <StyledDiv>
         <h2>Sign in</h2>
-          <label>
-            <input
-              value={values.username}
-              onChange={onInputChange}
-              type="text"
-              name="username"
-              placeholder="username"
-            />
-          </label>
-          <label>
-            <input
-              value={values.password}
-              onChange={onInputChange}
-              type="password"
-              name="password"
-              placeholder="password"
-            />
-          </label>
+        <label>
+          <input
+            value={values.username}
+            onChange={onInputChange}
+            type="text"
+            name="username"
+            placeholder="username"
+          />
+        </label>
+        <label>
+          <input
+            value={values.password}
+            onChange={onInputChange}
+            type="password"
+            name="password"
+            placeholder="password"
+          />
+        </label>
         <StyledButton>Login</StyledButton>
       </StyledDiv>
     </form>

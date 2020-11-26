@@ -120,8 +120,9 @@ header {
     text-decoration: none;
 }
 
-.dashboard-header {
-    text-align: center;
+.dashboard-footer {
+    display: flex;
+    justify-content: center;
 }
 
 .dashboard-buttons {

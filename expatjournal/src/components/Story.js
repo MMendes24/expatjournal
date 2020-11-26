@@ -21,7 +21,6 @@ const Story = props => {
     //fetch the individual Story to display when a story is clicked on in the Dashboard
     const fetchStory = () => {
         props.fetchSingleStory(params.id)
-        console.log(params.id)
     } 
 
     useEffect(() => {
