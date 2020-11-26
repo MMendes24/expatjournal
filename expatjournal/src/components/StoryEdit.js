@@ -23,7 +23,7 @@ label {
      margin: 1% 0%;
  }
 
-` 
+`
 const SectionStyled = styled.section`
     display: flex;
     flex-flow: column;
@@ -40,28 +40,28 @@ const initialStory = {
 }
 
 const StoryEdit = props => {
-    const [ story, setStory ] = useState(initialStory)
+    const [story, setStory] = useState(initialStory)
     const params = useParams()
     const history = useHistory()
     let isPhoto = false
 
     useEffect(() => {
         axiosWithAuth()
-        .get(`/api/stories/storyId/${params.id}`)
-        .then(res => {
-            console.log(res.data)
-            setStory({
-                ...story,
-                title: res.data[0].title,
-                location: res.data[0].location,
-                body: res.data[0].body,
-                image_url: res.data[0].image_url,
+            .get(`/api/stories/storyId/${params.id}`)
+            .then(res => {
+                console.log(res.data)
+                setStory({
+                    ...story,
+                    title: res.data[0].title,
+                    location: res.data[0].location,
+                    body: res.data[0].body,
+                    image_url: res.data[0].image_url,
+                })
+                isPhoto = true
             })
-            isPhoto = true
-        })
-        .catch(err => {
-            console.error("Oh no! Why would you???")
-        })
+            .catch(err => {
+                console.error("Oh no! Why would you???")
+            })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params.id])
 
@@ -78,24 +78,23 @@ const StoryEdit = props => {
 
     const onSubmit = e => {
         e.preventDefault()
-        console.log(editedStory)
         props.editStory(params.id, editedStory)
         history.push(`/dashboard/${props.userId}`)
     }
 
     return (
         <SectionStyled>
-            <img className="story-img" src={isPhoto = true ? props.body.image_url: "https://source.unsplash.com/random/400x400"} alt="completely random"/>
+            <img className="story-img" src={isPhoto = true ? props.body.image_url : "https://source.unsplash.com/random/400x400"} alt="completely random" />
             <FormStyled onSubmit={onSubmit}>
 
                 <label className="story-subheading">New Title:&nbsp;</label>
-                    <input
+                <input
                     name="title"
                     type="text"
                     placeholder="Title"
                     value={story.title}
                     onChange={handleStoryChanges}
-                    />
+                />
 
                 <label className="story-subheading">New Image:&nbsp;</label>
                 <input
@@ -104,27 +103,27 @@ const StoryEdit = props => {
                     placeholder="URL..."
                     value={story.image_url}
                     onChange={handleStoryChanges}
-                    />
+                />
 
                 <label className="story-subheading">New Location:&nbsp;</label>
-                    <input
+                <input
                     name="location"
                     type="text"
                     placeholder="Where it happened..."
                     value={story.location}
                     onChange={handleStoryChanges}
-                    />
-                
+                />
+
                 <label className="story-subheading">The New Story:&nbsp;</label>
-                    <textarea
+                <textarea
                     name="body"
                     type="text"
-                    rows="4" 
+                    rows="4"
                     cols="50"
                     placeholder="Your story..."
                     value={story.body}
                     onChange={handleStoryChanges}
-                    />
+                />
                 <button className="story-button" type="submit">Complete</button>
             </FormStyled>
         </SectionStyled>
@@ -144,4 +143,4 @@ const mapStatetoProps = state => {
     }
 }
 
-export default connect(mapStatetoProps, {editStory})(StoryEdit)
+export default connect(mapStatetoProps, { editStory })(StoryEdit)

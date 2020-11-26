@@ -13,9 +13,8 @@ const initialState = {
     userId: '',
 }
 
-
-const storyReducer = ( state = initialState, action ) => {
-    switch(action.type){
+const storyReducer = (state = initialState, action) => {
+    switch (action.type) {
         case FETCH_STORIES_START:
             return {
                 ...state,

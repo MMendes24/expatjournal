@@ -15,11 +15,6 @@ import { registerAction } from './actions/registerAction'
 
 import './App.css'
 
-// const dummyData = {
-//   sha: { username: "Sha", age: 29, id: 0 },
-//   tom: { username: "Tom", age: 30, id: 1 },
-// };
-
 const formSchema = yup.object().shape({
   username: yup
     .string()
@@ -55,17 +50,6 @@ function App(props) {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
-
-  // const getUsers = () => {
-  //   axios
-  //     .get("https://expatjournal2.netlify.app/") //users
-  //     .then((res) => {
-  //       setUser(res.data);
-  //     })
-  //     .catch((err) => {
-  //       debugger;
-  //     });
-  // };
 
   const postNewUser = (newUser) => {
     axios
@@ -161,9 +145,3 @@ function App(props) {
 }
 
 export default connect(null, {registerAction})(App)
-
-// {
-//   Object.values(user).map((x) => (
-//     <SignUp key={x.id} username={x.username} age={x.age} />
-//   ));
-// }

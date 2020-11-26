@@ -41,20 +41,12 @@ table {
     border-spacing: 0;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Permanent+Marker&display=swap');
-* {
-    /* color: Green;
-    border: 1px solid green */
-}
-
 body {
-    background: url("./assets/background.png");
-    background-repeat: repeat;
+    font-family: 'Architects Daughter', cursive;
 }
 
 h1 {
     font-size: 3.5em;
-    font-family: 'Permanent Marker', cursive;
     color: black;
     margin: 3% auto;
 }
@@ -64,13 +56,11 @@ h1 {
 }
 
 .form-container {
-    font-family: 'Permanent Marker', cursive;
     font-size: 1.5em;
 }
 
 .story-subheading {
     font-size: 2.5rem;
-    font-family: 'Permanent Marker', cursive;
     color: black;
     margin: 2% 0%;
 }
@@ -102,7 +92,6 @@ h1 {
 }
 
 h3 {
-    font-family: 'Patrick Hand', cursive;
     color: black;
 }
 
@@ -126,14 +115,14 @@ header {
     text-align: center;
     align-items: center;
     justify-content: space-evenly;
-    font-family: 'Patrick Hand', cursive;
     font-size: 2rem;
     margin: 3rem;
     text-decoration: none;
 }
 
-.dashboard-header {
-    text-align: center;
+.dashboard-footer {
+    display: flex;
+    justify-content: center;
 }
 
 .dashboard-buttons {
@@ -158,7 +147,6 @@ header {
 
 .add-story-form h2 {
     font-size: 2rem;
-    font-family: 'Patrick Hand', cursive;
 }
 
 .add-story-form input {
@@ -178,5 +166,4 @@ header {
 .dashboard-container h4{
     font-size: 2rem;
     text-align: center;
-    font-family: 'Patrick Hand', cursive;
 }

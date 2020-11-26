@@ -4,9 +4,19 @@ import { useHistory } from "react-router-dom";
 
 const StyledDiv = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
   align-items: center;
-  padding-top: 40vh;
+  padding-top: 20vh;
+
+  h2 {
+    font-size: 3rem;
+    margin: 2% 0%;
+  }
+
+  label {
+    margin: 0.5% 0%;
+  }
+
 `;
 
 const StyledButton = styled.button`
@@ -19,12 +29,13 @@ const StyledButton = styled.button`
   display: inline-block;
   font-size: 16px;
   margin: 1% 0%;
-  transition-duration: 0.8s;
+  transition-duration: 0.3s;
+
   &:hover {
     background-color: #4caf50;
     color: white;
   }
-`;
+`
 
 const SignUpForm = (props) => {
   const { values, submit, inputChange, disabled, errors } = props;
@@ -43,54 +54,42 @@ const SignUpForm = (props) => {
     <form className="form-container" onSubmit={onSubmit}>
       <StyledDiv>
         <h2>Sign up</h2>
-        <div className="errors">
-          <div>{errors.username}</div>
-          <div>{errors.password}</div>
+        <label>
+          <input
+            value={values.username}
+            onChange={onInputChange}
+            type="text"
+            name="username"
+            placeholder="Username"
+          />
+        </label>
+        <div>{errors.username}</div>
+        <label>
+          <input
+            value={values.password}
+            onChange={onInputChange}
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+        </label>
+        <div>{errors.password}</div>
+        <label>
+          <input
+            value={values.email}
+            onChange={onInputChange}
+            type="email"
+            name="email"
+            placeholder="email"
+          />
           <div>{errors.email}</div>
-        </div>
-        <div className="form-group">
-          <label>
-            <input
-              value={values.username}
-              onChange={onInputChange}
-              type="text"
-              name="username"
-              placeholder="Username"
-            />
-          </label>
-        </div>
-        <div className="form-group">
-          <div className="form-group">
-            <label>
-              <input
-                value={values.password}
-                onChange={onInputChange}
-                type="password"
-                name="password"
-                placeholder="Password"
-              />
-            </label>
-          </div>
-          <div className="form-group">
-            <label>
-              <input
-                value={values.email}
-                onChange={onInputChange}
-                type="email"
-                name="email"
-                placeholder="email"
-              />
-            </label>
-          </div>
-          <StyledButton type="submit" disabled={disabled}>
-            Sign up
+        </label>
+        <StyledButton type="submit" disabled={disabled}>
+          Sign up
           </StyledButton>
-        </div>
       </StyledDiv>
     </form>
   );
 };
 
 export default SignUpForm;
-
-// onClick={() => history.push("/")}

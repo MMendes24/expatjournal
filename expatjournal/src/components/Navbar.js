@@ -1,25 +1,29 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-    const StyledNav = styled.nav`
+
+const StyledNav = styled.nav`
     display:flex;
     justify-content: space-around;
-    margin: 4%;
+    margin: 2%;
     padding: 1%;
     font-size: 1.8rem;
     text-decoration:none;
-    h1{
+    
+    h2 {
         font-size: 2.4rem;
         text-align:left;
         margin: 0;
     }
-    a{
+
+    a {
         text-decoration: none;
-        font-family: 'Patrick Hand', cursive;
-        color:black;
+        font-family: 'Architects Daughter', cursive;
+        color: #262626;
     }
+    
     a:hover{
-        font-size: 2.2rem;
+        text-decoration: underline;
         transition: 0.3s;
     }
     `
@@ -27,10 +31,8 @@ const Navbar = () => {
     const id = localStorage.getItem('user_id')
     return (
         <StyledNav className='nav-bar'>
-            <h1>The World Through My Eyes</h1>
-            <a href='https://wizardly-mclean-829421.netlify.app/index.html'>Home</a>
+            <h2>Expatjournal</h2>
             <Link to='/'>Login</Link>
-            <Link to={`/register`}>Register</Link>
             <Link to={`/dashboard/${id}`}>Dashboard</Link>
         </StyledNav>
     )
